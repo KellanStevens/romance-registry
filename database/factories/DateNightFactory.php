@@ -14,10 +14,15 @@ class DateNightFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    protected $model = \App\Models\DateNight::class;
+
+    public function definition()
     {
         return [
-            //
+            'Date' => $this->faker->date,
+            'Location' => $this->faker->address,
+            'GoogleMapsLink' => $this->faker->url,
+            'Description' => $this->faker->paragraph,
         ];
     }
 }

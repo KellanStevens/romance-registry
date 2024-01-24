@@ -15,16 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
-Route::view('dates', 'dates')
-    ->middleware(['auth', 'verified'])
-    ->name('dates');
+// is authenticated and verified then run all views under it
+ Route::middleware(['auth', 'verified'])->group(function () {
+     Route::view('dashboard', 'dashboard')->name('dashboard');
+     Route::view('dates', 'dates')->name('dates');
+     Route::view('profile', 'profile')->name('profile');
+ });
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+//Route::view('dashboard', 'dashboard')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
+//
+//Route::view('dates', 'dates')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dates');
+//
+//Route::view('profile', 'profile')
+//    ->middleware(['auth'])
+//    ->name('profile');
 
 require __DIR__.'/auth.php';

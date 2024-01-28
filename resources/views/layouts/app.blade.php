@@ -27,10 +27,15 @@
                 </header>
             @endif
 
+            <div id="app">
+                @yield('content')
+            </div>
+
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+{{--            <main>--}}
+{{--                {{ $slot }}--}}
+{{--            </main>--}}
         </div>
+        @livewireScripts
     </body>
 </html>

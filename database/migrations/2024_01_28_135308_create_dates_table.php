@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('dates', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('location');
+            $table->date('date')->default(now());
+            $table->string('location')->nullable();
             $table->text('google_maps_link')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

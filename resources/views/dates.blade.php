@@ -10,11 +10,17 @@
             <div class=dark:bg-gray-800 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div>
-                        @livewireStyles
+{{--                        @livewireStyles--}}
 
-                        <livewire:date-night-table />
+{{--                        <livewire:date-night-table />--}}
+{{--                        <livewire:create-date />--}}
 
-                        @livewireScripts
+{{--                        @livewireScripts--}}
+                        @extends('layouts.app')
+
+                        @section('content')
+                            <livewire:create-date />
+                        @endsection
                     </div>
 
                 </div>

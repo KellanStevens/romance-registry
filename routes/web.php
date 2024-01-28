@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Livewire\CreateDate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+//Route::get('/create_date', CreateDate::class)->name('create_date');
 
 // is authenticated and verified then run all views under it
  Route::middleware(['auth', 'verified'])->group(function () {

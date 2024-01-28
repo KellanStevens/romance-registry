@@ -17,9 +17,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Dates:") }}
 
-                    @livewireStyles
-                        <livewire:date-night-table />
-                    @livewireScripts
+{{--                    @livewireStyles--}}
+{{--                        <livewire:date-night-table />--}}
+{{--                    @livewireScripts--}}
 
                 </div>
             </div>

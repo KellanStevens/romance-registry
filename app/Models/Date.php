@@ -9,7 +9,7 @@ class Date extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'date_id', 'price_rating', 'setting_rating', 'food_rating', 'comments'];
+    protected $fillable = ['date', 'location', 'google_maps_link', 'description'];
 
     public function date()
     {

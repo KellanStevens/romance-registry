@@ -15,7 +15,7 @@ class DateNight extends Model
 
     public function ratings()
     {
-        return $this->hasOne(Ratings::class, 'DateNightID');
+        return $this->hasMany(Ratings::class, 'DateNightID');
     }
 
     public function expenses()

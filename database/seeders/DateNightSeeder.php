@@ -12,6 +12,6 @@ class DateNightSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\DateNight::factory(10)->create();
     }
 }

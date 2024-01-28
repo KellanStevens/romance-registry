@@ -9,6 +9,7 @@ class Balance extends Model
 {
     use HasFactory;
 
+    protected $table = 'balance'; // specify the correct table name
     protected $fillable = ['user_id', 'balance'];
 
     public function user()

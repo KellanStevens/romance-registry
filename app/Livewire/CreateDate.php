@@ -14,6 +14,7 @@ class CreateDate extends Component
 
     public function render()
     {
+        $this->date = date('Y-m-d');
         return view('livewire.create-date');
     }
     public function saveDate()
@@ -33,7 +34,6 @@ class CreateDate extends Component
             'description' => $this->description,
         ]);
 
-        // Optionally, you can add a success message or redirect to another page.
         session()->flash('message', 'Date created successfully!');
         $this->reset(); // Reset the form fields after saving
     }

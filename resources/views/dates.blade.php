@@ -16,11 +16,15 @@
 {{--                        <livewire:create-date />--}}
 
 {{--                        @livewireScripts--}}
-                        @extends('layouts.app')
+{{--                        @extends('layouts.app')--}}
 
-                        @section('content')
-                            <livewire:create-date />
-                        @endsection
+{{--                        @section('content')--}}
+{{--                            <livewire:create-date />--}}
+{{--                        @endsection--}}
+
+{{--                        <livewire:create-date />--}}
+                        @livewire('create-date')
+
                     </div>
 
                 </div>

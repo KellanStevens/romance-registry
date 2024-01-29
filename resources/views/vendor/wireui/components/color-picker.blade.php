@@ -11,7 +11,7 @@
     @endif
 })" {{ $attributes->only(['class', 'wire:key'])->class('relative w-full') }}>
     <x-dynamic-component
-        {{ $attributes->except(['class', 'wire:key'])->whereDoesntStartWith('wire:model') }}
+        {{ $attributes->except(['class', 'wire:key'])->whereDoesntStartWith('wire:model.live') }}
         :component="WireUi::component('input')"
         x-model="{{ $colorNameAsValue ? 'selected.name' : 'selected.value' }}"
         x-bind:class="{ 'pl-8': selected.value }"

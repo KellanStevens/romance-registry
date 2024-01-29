@@ -12,7 +12,7 @@
     x-on:keydown.shift.tab.prevent="handleShiftTab"
     x-on:open-wireui-modal:{{ Str::kebab($name) }}.window="open"
     {{ $attributes
-        ->whereDoesntStartWith('wire:model')
+        ->whereDoesntStartWith('wire:model.live')
         ->whereStartsWith(['x-on:', '@', 'wire:']) }}
     style="display: none"
     x-cloak

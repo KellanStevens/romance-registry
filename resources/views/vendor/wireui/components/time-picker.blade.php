@@ -18,7 +18,7 @@
     <div class="relative">
         <x-dynamic-component
             :component="WireUi::component('input')"
-            {{ $attributes->whereDoesntStartWith(['wire:model', 'x-model', 'wire:key']) }}
+            {{ $attributes->whereDoesntStartWith(['wire:model.live', 'x-model', 'wire:key']) }}
             :borderless="$borderless"
             :shadowless="$shadowless"
             :label="$label"

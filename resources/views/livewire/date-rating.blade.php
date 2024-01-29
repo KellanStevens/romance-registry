@@ -2,7 +2,7 @@
 
 <div>
     <label for="food_rating">Food:</label>
-    <select wire:model="rating.food_rating" id="food_rating" class="select select-bordered max-w-xs">
+    <select wire:model.live="rating.food_rating" id="food_rating" class="select select-bordered max-w-xs">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -11,7 +11,7 @@
     </select>
     <br>
     <label for="price_rating">Price:</label>
-    <select wire:model="rating.price_rating" id="price_rating" class="select select-bordered max-w-xs">
+    <select wire:model.live="rating.price_rating" id="price_rating" class="select select-bordered max-w-xs">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -20,7 +20,7 @@
     </select>
 <br>
     <label for="setting_rating">Setting:</label>
-    <select wire:model="rating.setting_rating" id="setting_rating" class="select select-bordered max-w-xs">
+    <select wire:model.live="rating.setting_rating" id="setting_rating" class="select select-bordered max-w-xs">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

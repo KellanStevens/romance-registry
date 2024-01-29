@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->danielMarais()->create();
 
         // Generate other data using other factories
-        \App\Models\Date::factory(10)->create();
+        \App\Models\Date::factory()->count(10)->withRatings()->create();
         \App\Models\Ratings::factory(20)->create();
         \App\Models\Expense::factory(15)->create();
         \App\Models\Balance::factory(5)->create();

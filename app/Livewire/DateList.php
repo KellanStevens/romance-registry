@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Models\Date;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\Date;
+use App\Models\Ratings;
 
 class DateList extends Component
 {
@@ -11,8 +13,21 @@ class DateList extends Component
 
     public function render()
     {
-        $this->dates = Date::all();
+        $user = Auth::user();
 
-        return view('livewire.date-list');
+//        $this->dates = Date::with('ratings')->get()
+//            ->map(function ($date) use ($user) {
+//                $userRating = $date->ratings->firstWhere('user_id', $user->id);
+//
+//                return [
+//                    'date' => $date,
+//                    'userRating' => $userRating,
+//                ];
+//            });
+
+        $this->dates = Date::with('ratings')->get();
+
+        $dates = $this->dates;
+        return view('livewire.date-list', compact('dates'));
     }
 }

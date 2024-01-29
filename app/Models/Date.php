@@ -20,4 +20,9 @@ class Date extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Ratings::class);
+    }
 }

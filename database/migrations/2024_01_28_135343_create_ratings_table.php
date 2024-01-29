@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('date_id')->constrained();
-            $table->unsignedBigInteger('user_id'); // Assuming a users table for user reference
-            $table->integer('price_rating');
-            $table->integer('setting_rating');
-            $table->integer('food_rating');
+            $table->unsignedBigInteger('user_id');
+
+            // Allow null values for the rating fields
+            $table->integer('price_rating')->nullable();
+            $table->integer('setting_rating')->nullable();
+            $table->integer('food_rating')->nullable();
+
             $table->text('comments')->nullable();
             $table->timestamps();
 

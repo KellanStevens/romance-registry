@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Date;
+use App\Models\Ratings;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DateFactory extends Factory
@@ -17,5 +18,13 @@ class DateFactory extends Factory
             'google_maps_link' => $this->faker->url,
             'description' => $this->faker->paragraph,
         ];
+    }
+
+    public function withRatings()
+    {
+        return $this->afterCreating(function (Date $date) {
+            // Create three Rating records for each Date
+            Ratings::factory(1)->create(['date_id' => $date->id]);
+        });
     }
 }

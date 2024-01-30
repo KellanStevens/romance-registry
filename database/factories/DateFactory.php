@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Date;
-use App\Models\Ratings;
+use App\Models\Rating;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DateFactory extends Factory
@@ -24,7 +24,7 @@ class DateFactory extends Factory
     {
         return $this->afterCreating(function (Date $date) {
             // Create three Rating records for each Date
-            Ratings::factory(1)->create(['date_id' => $date->id]);
+            Rating::factory(1)->create(['date_id' => $date->id]);
         });
     }
 }

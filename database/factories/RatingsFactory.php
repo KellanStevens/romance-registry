@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Date;
-use App\Models\Ratings;
+use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RatingsFactory extends Factory
 {
-    protected $model = Ratings::class;
+    protected $model = Rating::class;
 
     public function definition()
     {

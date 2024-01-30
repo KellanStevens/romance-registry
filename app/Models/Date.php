@@ -16,13 +16,8 @@ class Date extends Model
         return $this->belongsTo(Date::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function ratings()
     {
-        return $this->hasMany(Ratings::class);
+        return $this->hasMany(Rating::class);
     }
 }

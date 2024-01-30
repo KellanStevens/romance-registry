@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Date;
-use App\Models\Ratings;
+use App\Models\Rating;
 
 class DateList extends Component
 {

@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Date;
-use App\Models\Ratings;
+use App\Models\Rating;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +12,10 @@ class DateRating extends Component
     public $date;
     public $ratings;
 
-    public function mount(Date $date, Ratings $ratings = null)
+    public function mount(Date $date, Rating $ratings = null)
     {
         $this->date = $date;
-        $this->$ratings = $ratings ?? new Ratings([
+        $this->$ratings = $ratings ?? new Rating([
             'food_rating' => 0,
             'price_rating' => 0,
             'setting_rating' => 0,
@@ -44,7 +44,7 @@ class DateRating extends Component
         $this->ratings->save();
 
         dd('SUCCESS');
-        session()->flash('message', 'Ratings added successfully!');
+        session()->flash('message', 'Rating added successfully!');
     }
 
     public function render()

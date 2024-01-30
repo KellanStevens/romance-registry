@@ -13,21 +13,10 @@ class DateList extends Component
 
     public function render()
     {
-        $user = Auth::user();
+//        $user = Auth::user();
 
-//        $this->dates = Date::with('ratings')->get()
-//            ->map(function ($date) use ($user) {
-//                $userRating = $date->ratings->firstWhere('user_id', $user->id);
-//
-//                return [
-//                    'date' => $date,
-//                    'userRating' => $userRating,
-//                ];
-//            });
+        $this->dates = Date::with(['ratings', 'expenses'])->get();
 
-        $this->dates = Date::with('ratings')->get();
-
-        $dates = $this->dates;
-        return view('livewire.date-list', compact('dates'));
+        return view('livewire.date-list');
     }
 }

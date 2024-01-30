@@ -19,21 +19,21 @@ class DatabaseSeeder extends Seeder
         User::factory()->kellanStevens()->create();
         User::factory()->danielMarais()->create();
 
-        Rating::factory()
-            ->count(4)
-            ->create([
-                'user_id' => User::factory(),
-                'date_id' => Date::factory(),
-            ]);
-
-        Expense::factory()
-            ->count(4)
-            ->create([
-                'date_id' => Date::factory(),
-            ]);
+//        Rating::factory()
+//            ->count(4)
+//            ->create([
+//                'user_id' => User::factory(),
+//                'date_id' => Date::factory(),
+//            ]);
+//
+//        Expense::factory()
+//            ->count(4)
+//            ->create([
+//                'date_id' => Date::factory(),
+//            ]);
 
         Date::factory()
-            ->count(2)
+            ->count(4)
             ->create()
             ->each(function ($date) {
                 $users = User::inRandomOrder()->limit(2)->get();

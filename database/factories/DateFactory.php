@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Date;
 use App\Models\Rating;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DateFactory extends Factory
@@ -16,15 +17,19 @@ class DateFactory extends Factory
             'date' => $this->faker->date,
             'location' => $this->faker->sentence,
             'google_maps_link' => $this->faker->url,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->sentence,
         ];
     }
 
-    public function withRatings()
+    public function configure()
     {
         return $this->afterCreating(function (Date $date) {
-            // Create three Rating records for each Date
-            Rating::factory(1)->create(['date_id' => $date->id]);
+            $users = User::inRandomOrder()->limit(2)->get();
+            $date->ratings()->createMany([
+                ['user_id' => $users[0]->id, 'price_rating' => rand(1, 5), 'setting_rating' => rand(1, 5), 'food_rating' => rand(1, 5), 'comments' => 'Random comment'],
+                ['user_id' => $users[1]->id, 'price_rating' => rand(1, 5), 'setting_rating' => rand(1, 5), 'food_rating' => rand(1, 5), 'comments' => 'Another random comment'],
+            ]);
+            $date->expenses()->create(['amount' => rand(10, 100)]);
         });
     }
 }

@@ -14,7 +14,7 @@ class ExpenseFactory extends Factory
     {
         return [
             'date_id' => Date::factory(),
-            'amount' => $this->faker->randomFloat(2, 10, 100),
+            'amount' => $this->faker->randomFloat(2, 10, 1000),
         ];
     }
 }

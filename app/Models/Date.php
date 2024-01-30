@@ -11,9 +11,9 @@ class Date extends Model
 
     protected $fillable = ['date', 'location', 'google_maps_link', 'description'];
 
-    public function date()
+    public function expenses()
     {
-        return $this->belongsTo(Date::class);
+        return $this->hasMany(Expense::class);
     }
 
     public function ratings()

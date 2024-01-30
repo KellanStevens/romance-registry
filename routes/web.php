@@ -21,6 +21,7 @@ Route::view('/', 'welcome');
  Route::middleware(['auth', 'verified'])->group(function () {
      Route::view('dashboard', 'dashboard')->name('dashboard');
      Route::view('dates', 'dates')->name('dates');
+     Route::view('rating', 'rating')->name('rating');
      Route::view('profile', 'profile')->name('profile');
  });
 

@@ -12,9 +12,13 @@ class CreateDate extends Component
     public $googleMapsLink;
     public $description;
 
-    public function render()
+    public function mount()
     {
         $this->date = date('Y-m-d');
+    }
+
+    public function render()
+    {
         return view('livewire.create-date');
     }
     public function saveDate()

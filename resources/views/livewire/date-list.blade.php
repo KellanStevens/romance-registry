@@ -16,6 +16,11 @@
                 <td class="px-6 py-4">{{ optional($dateInfo->ratings->where('user_id', 2)->first())->setting_rating }}</td>
                 <td class="px-6 py-4">{{ optional($dateInfo->ratings->where('user_id', 2)->first())->price_rating }}</td>
                 <td class="px-6 py-4">{{ optional($dateInfo->expenses->first())->amount }}</td>
+                @if($dateInfo->ratings->where('user_id', \Illuminate\Support\Facades\Auth::id()) == null)
+                    <td class="px-6 py-4">
+                        @livewire('add-rating', ['dateId' => $dateInfo->id])
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>

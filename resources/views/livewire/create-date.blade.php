@@ -39,7 +39,6 @@
         <div>{{ session('message') }}</div>
     @endif
 </div>
-
 {{--<div>--}}
 {{--    <form wire:submit="saveDate">--}}
 {{--        <label for="date">Date:</label>--}}

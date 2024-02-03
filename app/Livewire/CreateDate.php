@@ -21,6 +21,7 @@ class CreateDate extends Component
     {
         return view('livewire.create-date');
     }
+
     public function saveDate()
     {
         $this->validate([

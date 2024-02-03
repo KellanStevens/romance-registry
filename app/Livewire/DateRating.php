@@ -11,6 +11,8 @@ class DateRating extends Component
 {
     public $date;
     public $ratings;
+    public $selectedDateId;
+
 
     public function mount(Date $date, Rating $ratings = null)
     {
@@ -49,6 +51,21 @@ class DateRating extends Component
 
     public function render()
     {
-        return view('livewire.date-rating');
+        $user = Auth::user();
+
+        $dates = Date::whereDoesntHave('ratings', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+
+//        dd($dates);
+
+        return view('livewire.date-rating', ['dates' => $dates]);
+//        return view('livewire.date-rating');
     }
+
+    public function dateSelected()
+    {
+        $this->emit('dateSelected', $this->selectedDateId);
+    }
+
 }

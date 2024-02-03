@@ -2,28 +2,38 @@
 
 namespace App\Livewire;
 
+use App\Models\Date;
+use App\Models\Rating;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class AddRating extends Component
 {
     public $dateId;
-    public $priceRating;
-    public $settingRating;
-    public $foodRating;
-    public $comments;
-
-    public function mount($dateId)
-    {
-        $this->dateId = $dateId;
-    }
+    public int $priceRating;
+    public int $settingRating;
+    public int $foodRating;
+    public string $comment;
 
     public function render()
     {
-        return view('livewire.add-rating');
+        $user = Auth::user();
+
+        $dates = Date::whereDoesntHave('ratings', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+
+        return view('livewire.add-rating', ['dates' => $dates]);
     }
 
     public function submitRating()
     {
+        // Check if a date has been selected
+        if (!$this->dateId) {
+            session()->flash('message', 'Please select a date before submitting a rating.');
+            return;
+        }
+
         // Check if the user has already rated this date
         $existingRating = Rating::where('date_id', $this->dateId)
             ->where('user_id', Auth::id())
@@ -36,7 +46,7 @@ class AddRating extends Component
                 'price_rating' => $this->priceRating,
                 'setting_rating' => $this->settingRating,
                 'food_rating' => $this->foodRating,
-                'comments' => $this->comments,
+                'comments' => $this->comment,
             ]);
 
             session()->flash('message', 'Rating added successfully!');
@@ -45,5 +55,10 @@ class AddRating extends Component
         }
 
         $this->reset();
+    }
+
+    public function dateSelected($dateId)
+    {
+        $this->dateId = $dateId;
     }
 }

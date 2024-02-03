@@ -8,8 +8,5 @@
             <option value="{{ $date->id }}">{{ $date->date }}</option>
         @endforeach
     </select>
-
-    @if($selectedDateId)
-        @livewire('add-rating', ['dateId' => $selectedDateId])
-    @endif
+    <button wire:click="dateSelected">Select Date</button> <!-- Add a button to trigger the dateSelected method -->
 </div>

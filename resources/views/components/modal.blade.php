@@ -20,7 +20,7 @@
             </div>
          @endif
         <div class="text-blue-700" >
-            {{ $body }}
+{{--            {{ $body }}--}}
         </div>
 
     </div>

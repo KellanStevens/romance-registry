@@ -3,13 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Date;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class DateSelector extends Component
 {
     public $selectedDateId;
 
+    protected $listeners = ['ratingAdded' => '$refresh'];
     public function render()
     {
         $user = Auth::user();
@@ -19,5 +20,10 @@ class DateSelector extends Component
         })->get();
 
         return view('livewire.date-selector', ['dates' => $dates]);
+    }
+
+    public function dateSelected()
+    {
+        $this->emit('dateSelected', $this->selectedDateId);
     }
 }

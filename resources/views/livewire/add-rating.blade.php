@@ -2,7 +2,7 @@
     <form wire:submit.prevent="submitRating">
         <div>
             <label for="selectedDateId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium text-gray-700">Select Date to Rate:</label>
-            <select class="select select-bordered w-full max-w-xs" wire:model="dateId" id="dateId" name="dateId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+            <select wire:model="dateId" class="select select-bordered w-full max-w-xs" id="dateId" name="dateId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
                 <option disabled selected value="">Select a Date</option>
                 @foreach($dates as $date)
                     <option value="{{ $date->id }}">{{ $date->date }}</option>

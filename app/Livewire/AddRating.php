@@ -17,6 +17,7 @@ class AddRating extends Component
 
     public function render()
     {
+        /* Get all dates that the user has not rated */
         $user = Auth::user();
 
         $dates = Date::whereDoesntHave('ratings', function ($query) use ($user) {
@@ -28,6 +29,8 @@ class AddRating extends Component
 
     public function submitRating()
     {
+        /* Validate the form and submit rating */
+
         // Check if a date has been selected
         if (!$this->dateId) {
             session()->flash('message', 'Please select a date before submitting a rating.');

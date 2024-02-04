@@ -2,7 +2,8 @@
 
 <div>
     <h1>Date Details:</h1>
-    <form wire:submit="saveDate">
+{{--    <form wire:submit="saveDate">--}} {{--This is the old form that was replaced with the form below--}}
+    <form wire:submit="submitDate">
         <label class="form-control w-full max-w-xs">
             <div class="label">
                 <span class="label-text">Date</span>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('date_id')->constrained();
+            $table->foreignId('date_night_id')->constrained();
             $table->integer('price_rating')->nullable();
             $table->integer('setting_rating')->nullable();
             $table->integer('food_rating')->nullable();

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,12 +15,5 @@ class RatingSeeder extends Seeder
      */
     public function run()
     {
-        // Create ratings and associate them with users and dates
-//        Rating::factory()
-//            ->count(20)
-//            ->create([
-//                'user_id' => User::factory(),
-//                'date_id' => Date::factory(),
-//            ]);
     }
 }

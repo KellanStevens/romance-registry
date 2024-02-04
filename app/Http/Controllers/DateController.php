@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use Illuminate\Http\Request;
 
 class DateController extends Controller
@@ -12,7 +12,7 @@ class DateController extends Controller
      */
     public function index()
     {
-        $date = Date::all();
+        $date = DateNight::all();
 
         return response()->json(['date' => $date], 201);
     }
@@ -29,9 +29,9 @@ class DateController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $date = Date::create($request->all());
+        $date = DateNight::create($request->all());
 
-        return response()->json(['message' => 'Date created successfully', 'date' => $date], 201);
+        return response()->json(['message' => 'DateNight created successfully', 'date' => $date], 201);
     }
 
     /**
@@ -39,12 +39,12 @@ class DateController extends Controller
      */
     public function show(string $id)
     {
-        $date = Date::find($id);
+        $date = DateNight::find($id);
 
         if ($date) {
             return response()->json(['date' => $date], 201);
         } else {
-            return response()->json(['message' => 'Date not found'], 404);
+            return response()->json(['message' => 'DateNight not found'], 404);
         }
     }
 
@@ -60,13 +60,13 @@ class DateController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $date = Date::find($id);
+        $date = DateNight::find($id);
 
         if ($date) {
             $date->update($validatedData);
-            return response()->json(['message' => 'Date updated successfully', 'date' => $date], 201);
+            return response()->json(['message' => 'DateNight updated successfully', 'date' => $date], 201);
         } else {
-            return response()->json(['message' => 'Date not found'], 404);
+            return response()->json(['message' => 'DateNight not found'], 404);
         }
     }
 
@@ -75,13 +75,13 @@ class DateController extends Controller
      */
     public function destroy(string $id)
     {
-        $date = Date::find($id);
+        $date = DateNight::find($id);
 
         if ($date) {
             $date->delete();
-            return response()->json(['message' => 'Date deleted successfully'], 201);
+            return response()->json(['message' => 'DateNight deleted successfully'], 201);
         } else {
-            return response()->json(['message' => 'Date not found'], 404);
+            return response()->json(['message' => 'DateNight not found'], 404);
         }
     }
 }

@@ -9,11 +9,11 @@ class Rating extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'date_id', 'price_rating', 'setting_rating', 'food_rating', 'comments'];
+    protected $fillable = ['user_id', 'date_night_id', 'price_rating', 'setting_rating', 'food_rating', 'comments'];
 
-    public function date()
+    public function date_night()
     {
-        return $this->belongsTo(Date::class);
+        return $this->belongsTo(DateNight::class);
     }
 
     public function user()

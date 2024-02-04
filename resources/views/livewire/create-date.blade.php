@@ -42,7 +42,7 @@
 </div>
 {{--<div>--}}
 {{--    <form wire:submit="saveDate">--}}
-{{--        <label for="date">Date:</label>--}}
+{{--        <label for="date">DateNight:</label>--}}
 {{--        <input type="date" wire:model.live="date" id="date" required>--}}
 
 {{--        <label for="location">Location:</label>--}}
@@ -54,7 +54,7 @@
 {{--        <label for="description">Description:</label>--}}
 {{--        <textarea wire:model.live="description" id="description"></textarea>--}}
 
-{{--        <button type="submit">Save Date</button>--}}
+{{--        <button type="submit">Save DateNight</button>--}}
 {{--    </form>--}}
 {{--    @if (session()->has('message'))--}}
 {{--        <div>{{ session('message') }}</div>--}}

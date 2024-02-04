@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use App\Models\Expense;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +13,7 @@ class ExpenseFactory extends Factory
     public function definition()
     {
         return [
-            'date_id' => Date::factory(),
+            'date_night_id' => DateNight::factory(),
             'amount' => $this->faker->randomFloat(2, 10, 1000),
         ];
     }

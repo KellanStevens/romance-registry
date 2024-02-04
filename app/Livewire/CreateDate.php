@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -33,14 +33,14 @@ class CreateDate extends Component
         ]);
 
         // Create a new date record in the database
-        Date::create([
+        DateNight::create([
             'date' => $this->date,
             'location' => $this->location,
             'google_maps_link' => $this->googleMapsLink,
             'description' => $this->description,
         ]);
 
-        session()->flash('message', 'Date created successfully!');
+        session()->flash('message', 'DateNight created successfully!');
         $this->reset(); // Reset the form fields after saving
     }
 
@@ -55,7 +55,7 @@ class CreateDate extends Component
             ]);
 
         if ($response->successful()) {
-            session()->flash('message', 'Date created successfully');
+            session()->flash('message', 'DateNight created successfully');
             $this->reset();
         } else {
             session()->flash('error', 'Error creating date');

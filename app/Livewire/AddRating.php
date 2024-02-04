@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -20,7 +20,7 @@ class AddRating extends Component
         /* Get all dates that the user has not rated */
         $user = Auth::user();
 
-        $dates = Date::whereDoesntHave('ratings', function ($query) use ($user) {
+        $dates = DateNight::whereDoesntHave('ratings', function ($query) use ($user) {
             $query->where('user_id', $user->id);
         })->get();
 

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use App\Models\Expense;
 use App\Models\Rating;
 use App\Models\User;
@@ -19,20 +19,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->kellanStevens()->create();
         User::factory()->danielMarais()->create();
 
-//        Rating::factory()
-//            ->count(4)
-//            ->create([
-//                'user_id' => User::factory(),
-//                'date_id' => Date::factory(),
-//            ]);
-//
-//        Expense::factory()
-//            ->count(4)
-//            ->create([
-//                'date_id' => Date::factory(),
-//            ]);
-
-        Date::factory()
+        DateNight::factory()
             ->count(4)
             ->create()
             ->each(function ($date) {
@@ -43,22 +30,6 @@ class DatabaseSeeder extends Seeder
                 ]);
                 $date->expenses()->create(['amount' => rand(10, 100)]);
             });
-
-
-        /*
-        // Generate specific users
-        \App\Models\User::factory()->kellanStevens()->create();
-        \App\Models\User::factory()->danielMarais()->create();
-
-        // Generate other data using other factories
-        \App\Models\Date::factory()->count(10)->withRatings()->create();
-        \App\Models\Rating::factory(20)->create();
-        \App\Models\Expense::factory(15)->create();
-        \App\Models\Balance::factory(5)->create();
-
-//        \App\Models\Balance::factory()->highBalance()->create();
-        */
-
     }
 
 }

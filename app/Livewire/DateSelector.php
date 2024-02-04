@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Date;
+use App\Models\DateNight;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class DateSelector extends Component
     {
         $user = Auth::user();
 
-        $dates = Date::whereDoesntHave('ratings', function ($query) use ($user) {
+        $dates = DateNight::whereDoesntHave('ratings', function ($query) use ($user) {
             $query->where('user_id', $user->id);
         })->get();
 

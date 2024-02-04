@@ -9,10 +9,10 @@ class Expense extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date_id', 'amount'];
+    protected $fillable = ['date_night_id', 'amount'];
 
-    public function date()
+    public function date_night()
     {
-        return $this->belongsTo(Date::class);
+        return $this->belongsTo(DateNight::class);
     }
 }

@@ -27,7 +27,7 @@ class DateNightTest extends TestCase
     {
         $DateNight = DateNight::factory()->create();
 
-        $this->assertDatabaseHas('date_nights', ['DateNightID' => $DateNight->DateNightID]);
+        $this->assertDatabaseHas('date_nights', ['id' => $DateNight->id]);
 
         // Delete the DateNight
         $DateNight->delete();
@@ -40,7 +40,7 @@ class DateNightTest extends TestCase
     {
         $DateNight = DateNight::factory()->create();
 
-        $this->assertDatabaseHas('date_nights', ['DateNightID' => $DateNight->DateNightID]);
+        $this->assertDatabaseHas('date_nights', ['id' => $DateNight->id]);
 
         $DateNight->Location = 'Updated DateNight Name';
         $DateNight->save();
@@ -60,7 +60,7 @@ class DateNightTest extends TestCase
 
         $DateNight->delete();
 
-        $this->assertDatabaseMissing('date_nights', ['DateNightID' => $DateNight->DateNightID]);
+        $this->assertDatabaseMissing('date_nights', ['id' => $DateNight->id]);
 
     }
 }

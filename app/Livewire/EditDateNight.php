@@ -43,5 +43,7 @@ class EditDateNight extends ModalComponent
         ]);
 
         session()->flash('message', 'DateNight updated successfully!');
+
+        $this->closeModal();
     }
 }

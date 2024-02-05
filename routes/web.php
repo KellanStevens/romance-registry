@@ -23,11 +23,6 @@ Route::view('/', 'welcome')->name('welcome');
      Route::view('rating', 'rating')->name('rating');
      Route::view('expense', 'expense')->name('expense');
      Route::view('profile', 'profile')->name('profile');
-
-     // Add the edit-date-night route using a closure
-     Route::get('edit-dates/{dateNightId}', function ($dateNightId) {
-         return view('edit-dates', compact('dateNightId'));
-     })->name('edit-dates');
  });
 
 

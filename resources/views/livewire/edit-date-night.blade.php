@@ -1,4 +1,4 @@
-<div>
+<div class="p-12 dark:bg-gray-800">
     <form wire:submit="update">
         <label class="form-control w-full max-w-xs">
             <div class="label">
@@ -23,7 +23,7 @@
             <div class="label">
                 <span class="label-text">Description</span>
             </div>
-            <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24" placeholder="Description" value="{{ $description }}" required></textarea>
+            <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description" value="{{ $description }}" required></textarea>
         </label>
         <br>
         <button class="btn" type="submit">Save Date</button>

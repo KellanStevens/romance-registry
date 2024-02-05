@@ -6,7 +6,7 @@ use App\Models\DateNight;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
-class CreateDate extends Component
+class CreateDateNight extends Component
 {
     public $date;
     public $location;
@@ -20,7 +20,7 @@ class CreateDate extends Component
 
     public function render()
     {
-        return view('livewire.create-date');
+        return view('livewire.create-date-night');
     }
 
     public function store()

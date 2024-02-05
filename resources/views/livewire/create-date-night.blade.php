@@ -1,4 +1,4 @@
-<!-- resources/views/livewire/create-date.blade.php -->
+<!-- resources/views/livewire/create-date-night.blade.php -->
 
 <div>
     <h1>Date Details:</h1>

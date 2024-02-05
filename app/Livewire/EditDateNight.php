@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\DateNight;
 use LivewireUI\Modal\ModalComponent;
 
-class EditDate extends ModalComponent
+class EditDateNight extends ModalComponent
 {
     public $dateNightID;
     private DateNight $dateNight;
@@ -19,6 +19,6 @@ class EditDate extends ModalComponent
     }
     public function render()
     {
-        return view('livewire.edit-date');
+        return view('livewire.edit-date-night');
     }
 }

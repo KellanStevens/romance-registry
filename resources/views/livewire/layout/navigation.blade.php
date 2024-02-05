@@ -35,15 +35,15 @@ new class extends Component
                     </x-nav-link>
                 </div>
 
-{{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
-{{--                    <x-nav-link :href="route('dates')" :active="request()->routeIs('dates')" wire:navigate>--}}
-{{--                        {{ __('Date Nights') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </div>--}}
-
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('rating')" :active="request()->routeIs('rating')" wire:navigate>
                         {{ __('Rating') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('expense')" :active="request()->routeIs('expense')" wire:navigate>
+                        {{ __('Expense') }}
                     </x-nav-link>
                 </div>
             </div>

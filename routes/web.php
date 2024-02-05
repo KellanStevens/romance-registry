@@ -21,6 +21,7 @@ Route::view('/', 'welcome')->name('welcome');
      Route::view('dashboard', 'dashboard')->name('dashboard');
 //     Route::view('dates', 'dates')->name('dates');
      Route::view('rating', 'rating')->name('rating');
+     Route::view('expense', 'expense')->name('expense');
      Route::view('profile', 'profile')->name('profile');
  });
 

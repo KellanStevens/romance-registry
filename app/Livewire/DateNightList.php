@@ -7,7 +7,7 @@ use Livewire\Component;
 use App\Models\DateNight;
 use App\Models\Rating;
 
-class DateList extends Component
+class DateNightList extends Component
 {
     public $dates;
     public $showEditModal = false;
@@ -16,7 +16,7 @@ class DateList extends Component
     {
         $this->dates = DateNight::with(['ratings', 'expenses'])->get();
 
-        return view('livewire.date-list');
+        return view('livewire.date-night-list');
     }
 
     public function edit()

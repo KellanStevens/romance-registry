@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class CreateRating extends Component
 {
-    public $dateId;
+    public $dateNightId;
     public int $priceRating;
     public int $settingRating;
     public int $foodRating;
@@ -27,13 +27,13 @@ class CreateRating extends Component
         return view('livewire.create-rating', ['dates' => $dates]);
     }
 
-    public function submitRating()
+    public function store()
     {
         /* Validate the form and submit rating */
 
         // Check if a date has been selected
-        if (!$this->dateId) {
-            session()->flash('message', 'Please select a date before submitting a rating.');
+        if (!$this->dateNightId) {
+            session()->flash('message', 'Please select a date night before submitting a rating.');
             return;
         }
 
@@ -45,7 +45,7 @@ class CreateRating extends Component
         if (!$existingRating) {
             Rating::create([
                 'user_id' => Auth::id(),
-                'date_id' => $this->dateId,
+                'date_night_id' => $this->dateId,
                 'price_rating' => $this->priceRating,
                 'setting_rating' => $this->settingRating,
                 'food_rating' => $this->foodRating,
@@ -58,10 +58,5 @@ class CreateRating extends Component
         }
 
         $this->reset();
-    }
-
-    public function dateSelected($dateId)
-    {
-        $this->dateId = $dateId;
     }
 }

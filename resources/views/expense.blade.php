@@ -10,6 +10,7 @@
             <div class="dark:bg-gray-800 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div>
+                        @livewire('create-expense')
                     </div>
                 </div>
             </div>

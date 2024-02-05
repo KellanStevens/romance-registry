@@ -2,12 +2,49 @@
 
 namespace App\Livewire;
 
+use App\Models\DateNight;
+use App\Models\Expense;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateExpense extends Component
 {
+    public $dateNightId;
+    public $amount;
     public function render()
     {
-        return view('livewire.create-expense');
+        /* Get all dates don't have an expense */
+
+        $dates = DateNight::whereDoesntHave('expenses')->get();
+
+        return view('livewire.create-expense', ['dates' => $dates]);
+    }
+
+    public function store()
+    {
+        /* Validate the form and submit expense */
+
+        // Check if a date has been selected
+        if (!$this->dateNightId) {
+            session()->flash('message', 'Please select a date night before submitting an expense.');
+            return;
+        }
+
+        // Check if the user has already added an expense for this date
+        $existingExpense = Expense::where('date_night_id', $this->dateNightId)
+            ->first();
+
+        if (!$existingExpense) {
+            Expense::create([
+                'date_night_id' => $this->dateNightId,
+                'amount' => $this->amount,
+            ]);
+
+            session()->flash('message', 'Expense added successfully!');
+        } else {
+            session()->flash('message', 'You have already added an expense for this date.');
+        }
+
+        $this->reset();
     }
 }

@@ -12,7 +12,7 @@
 
         <div class="mb-4">
             <label for="priceRating" class="block text-sm font-medium text-gray-700">Price Rating:</label>
-            <div class="rating" wire:model="priceRating">
+            <div class="rating rating-lg" wire:model="priceRating">
                 <input type="radio" name="priceRating" class="mask mask-star" wire:model="priceRating" value="1" />
                 <input type="radio" name="priceRating" class="mask mask-star" wire:model="priceRating" value="2" />
                 <input type="radio" name="priceRating" class="mask mask-star" wire:model="priceRating" value="3" />
@@ -23,7 +23,7 @@
 
         <div class="mb-4">
             <label for="settingRating" class="block text-sm font-medium text-gray-700">Setting Rating:</label>
-            <div class="rating" wire:model="settingRating">
+            <div class="rating rating-lg" wire:model="settingRating">
                 <input type="radio" name="settingRating" class="mask mask-star" wire:model="settingRating" value="1" />
                 <input type="radio" name="settingRating" class="mask mask-star" wire:model="settingRating" value="2" />
                 <input type="radio" name="settingRating" class="mask mask-star" wire:model="settingRating" value="3" />
@@ -34,7 +34,7 @@
 
         <div class="mb-4">
             <label for="foodRating" class="block text-sm font-medium text-gray-700">Food Rating:</label>
-            <div class="rating" wire:model="foodRating">
+            <div class="rating rating-lg" wire:model="foodRating">
                 <input type="radio" name="foodRating" class="mask mask-star" wire:model="foodRating" value="1" />
                 <input type="radio" name="foodRating" class="mask mask-star" wire:model="foodRating" value="2" />
                 <input type="radio" name="foodRating" class="mask mask-star" wire:model="foodRating" value="3" />

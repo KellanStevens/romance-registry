@@ -3,7 +3,7 @@
 <div class="overflow-x-auto">
     <table class="table">
         <tbody>
-        @foreach($dates as $DateNight)
+        @foreach($this->dateNightsData() as $DateNight)
             <tr>
                 <td class="px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                     {{ $DateNight->date }}

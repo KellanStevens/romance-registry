@@ -42,7 +42,7 @@ class CreateExpense extends Component
 
             session()->flash('message', 'Expense added successfully!');
         } else {
-            session()->flash('message', 'You have already added an expense for this date.');
+            session()->flash('message', 'You have already added an expense for this date night.');
         }
 
         $this->reset();

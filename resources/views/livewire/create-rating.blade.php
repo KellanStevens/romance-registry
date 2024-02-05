@@ -1,4 +1,14 @@
 <div>
+    @if(count($this->dateNightsData) <= 0)
+        <div class="alert alert-error">
+            <div class="flex-1">
+                <label class="label">
+                    <span class="label-text
+                    dark:text-white">No date night Found</span>
+                </label>
+            </div>
+        </div>
+    @else
     <form wire:submit.prevent="store">
         <div>
             <label for="selectedDateNightId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium text-gray-700">Select Date to Rate:</label>
@@ -61,4 +71,5 @@
             <span>You are currently offline.</span>
         </div>
     </div>
+    @endif
 </div>

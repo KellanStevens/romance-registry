@@ -14,6 +14,7 @@ class CreateRating extends Component
     public int $priceRating;
     public int $settingRating;
     public int $foodRating;
+
     public string $comment = '';
 
     public function render()

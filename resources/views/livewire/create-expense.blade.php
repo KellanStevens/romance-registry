@@ -4,7 +4,7 @@
             <div class="flex-1">
                 <label class="label">
                     <span class="label-text
-                    dark:text-white">No Dates Found</span>
+                    dark:text-white">No date night Found</span>
                 </label>
             </div>
         </div>

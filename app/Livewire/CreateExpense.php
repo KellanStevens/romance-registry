@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use App\Models\DateNight;
 use App\Models\Expense;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class CreateExpense extends Component
@@ -13,11 +13,14 @@ class CreateExpense extends Component
     public $amount;
     public function render()
     {
+        return view('livewire.create-expense');
+    }
+
+    #[Computed()]
+    public function dateNightsData()
+    {
         /* Get all dates don't have an expense */
-
-        $dates = DateNight::whereDoesntHave('expenses')->get();
-
-        return view('livewire.create-expense', ['dates' => $dates]);
+        return DateNight::whereDoesntHave('expenses')->get();
     }
 
     public function store()

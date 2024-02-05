@@ -1,7 +1,4 @@
-<!-- resources/views/livewire/create-date.blade.php -->
-
 <div>
-    <h1>Date Details:</h1>
     <form wire:submit="store">
         <label class="form-control w-full max-w-xs">
             <div class="label">

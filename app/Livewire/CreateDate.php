@@ -23,7 +23,7 @@ class CreateDate extends Component
         return view('livewire.create-date');
     }
 
-    public function saveDate()
+    public function store()
     {
         $this->validate([
             'date' => 'required|date',
@@ -43,23 +43,4 @@ class CreateDate extends Component
         session()->flash('message', 'DateNight created successfully!');
         $this->reset(); // Reset the form fields after saving
     }
-
-    public function submitDate()
-    {
-        $response = Http::withToken(auth()->user()->api_token)
-            ->post(route('api.dates.store'), [
-                'date' => $this->date,
-                'location' => $this->location,
-                'google_maps_link' => $this->googleMapsLink,
-                'description' => $this->description,
-            ]);
-
-        if ($response->successful()) {
-            session()->flash('message', 'DateNight created successfully');
-            $this->reset();
-        } else {
-            session()->flash('error', 'Error creating date');
-        }
-    }
-
 }

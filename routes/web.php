@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\DateList;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Livewire\CreateDate;
 /*
@@ -13,14 +14,12 @@ use \App\Http\Livewire\CreateDate;
 |
 */
 
-Route::view('/', 'welcome');
-
-//Route::get('/create_date', CreateDate::class)->name('create_date');
+Route::view('/', 'welcome')->name('welcome');
 
 // is authenticated and verified then run all views under it
  Route::middleware(['auth', 'verified'])->group(function () {
      Route::view('dashboard', 'dashboard')->name('dashboard');
-     Route::view('dates', 'dates')->name('dates');
+//     Route::view('dates', 'dates')->name('dates');
      Route::view('rating', 'rating')->name('rating');
      Route::view('profile', 'profile')->name('profile');
  });

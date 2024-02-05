@@ -37,6 +37,7 @@ class UserFactory extends Factory
     public function kellanStevens()
     {
         return $this->state(fn (array $attributes) => [
+            'id' => 1,
             'name' => 'Kellan Stevens',
             'email' => 'kellan@kellanstevens.com',
             'email_verified_at' => now(),
@@ -48,6 +49,7 @@ class UserFactory extends Factory
     public function danielMarais()
     {
         return $this->state(fn (array $attributes) => [
+            'id' => 2,
             'name' => 'Daniel Marais',
             'email' => 'daniel@danielmarais.com',
             'email_verified_at' => now(),

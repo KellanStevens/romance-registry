@@ -6,11 +6,14 @@ use App\Models\DateNight;
 use App\Models\Expense;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class CreateExpense extends Component
+class CreateExpense extends ModalComponent
 {
-    public $dateNightId;
-    public $amount;
+    public $dateNightId, $amount;
+
+    public $title = 'Add Expense';
+
     public function render()
     {
         return view('livewire.create-expense');
@@ -48,6 +51,6 @@ class CreateExpense extends Component
             session()->flash('message', 'You have already added an expense for this date night.');
         }
 
-        $this->reset();
+        $this->closeModal();
     }
 }

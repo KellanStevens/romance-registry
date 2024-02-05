@@ -1,27 +1,6 @@
 <div class="p-12 dark:bg-gray-800">
-    @if(count($this->dateNightsData()) <= 0)
-        <div class="alert alert-error">
-            <div class="flex-1">
-                <label class="label">
-                    <span class="label-text
-                    dark:text-white">No date night Found</span>
-                </label>
-            </div>
-        </div>
-    @else
-        <h1 class="text-white">{{ $title }}</h1>
+    <h1 class="dark:text-white text-black">{{ $title }}</h1>
     <form wire:submit.prevent="store">
-{{--        <div>--}}
-{{--            <label for="dateNightId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium">Select Date to Rate:</label>--}}
-{{--            <div>--}}
-{{--                <select wire:model="dateNightId" class="select select-bordered w-full max-w-xs" id="dateNightId" name="dateNightId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">--}}
-{{--                    <option selected value="">Select a Date</option>--}}
-{{--                    @foreach($this->dateNightsData() as $dateNight)--}}
-{{--                        <option value="{{ $dateNight->id }}">{{ $dateNight->date }} [{{ $dateNight->location }}]</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--            </div>--}}
-{{--        </div>--}}
         <br>
         <div class="mb-4">
             <label for="priceRating" class="block text-sm font-medium">Price Rating:</label>
@@ -74,5 +53,4 @@
             <span>You are currently offline.</span>
         </div>
     </div>
-    @endif
 </div>

@@ -1,5 +1,6 @@
 <div class="p-12 dark:bg-gray-800">
-    <h1 class="text-white">{{ $title }}</h1>
+    <h1 class="dark:text-white text-black">{{ $title }}</h1>
+    <br>
     <form wire:submit="update">
         <label class="form-control w-full max-w-xs">
             <div class="label">

@@ -19,9 +19,11 @@
                 <td class="px-6 py-4 hidden lg:table-cell">{{ $DateNight->description }}</td>
                 <td class="px-6 py-4">
                     @if($DateNight->ratings->where('user_id', 2)->first() != null)
-                        Food:    {{ optional($DateNight->ratings->where('user_id', 2)->first())->food_rating }}
-                        Setting: {{ optional($DateNight->ratings->where('user_id', 2)->first())->setting_rating }}
-                        Price:   {{ optional($DateNight->ratings->where('user_id', 2)->first())->price_rating }}
+                        <div class="tooltip" data-tip="{{ $DateNight->ratings->where('user_id', 2)->first()->comments }}">
+                            Food:    {{ optional($DateNight->ratings->where('user_id', 2)->first())->food_rating }}
+                            Setting: {{ optional($DateNight->ratings->where('user_id', 2)->first())->setting_rating }}
+                            Price:   {{ optional($DateNight->ratings->where('user_id', 2)->first())->price_rating }}
+                        </div>
                     @elseif (Auth::id() != 2)
                         <div class="tooltip" data-tip="Daniel needs to add a rating">
                             <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
@@ -32,9 +34,11 @@
                 </td>
                 <td class="px-6 py-4">
                     @if($DateNight->ratings->where('user_id', 1)->first() != null)
-                        Food:    {{ optional($DateNight->ratings->where('user_id', 1)->first())->food_rating }}
-                        Setting: {{ optional($DateNight->ratings->where('user_id', 1)->first())->setting_rating }}
-                        Price:   {{ optional($DateNight->ratings->where('user_id', 1)->first())->price_rating }}
+                        <div class="tooltip" data-tip="{{ $DateNight->ratings->where('user_id', 1)->first()->comments }}">
+                            Food:    {{ optional($DateNight->ratings->where('user_id', 1)->first())->food_rating }}
+                            Setting: {{ optional($DateNight->ratings->where('user_id', 1)->first())->setting_rating }}
+                            Price:   {{ optional($DateNight->ratings->where('user_id', 1)->first())->price_rating }}
+                        </div>
                     @elseif (Auth::id() != 1)
                         <div class="tooltip" data-tip="Kellan needs to add a rating">
                             <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
@@ -44,9 +48,9 @@
                     @endif
                 </td>
                 <td class="px-6 py-4">
-{{--                    @if(!isset($DateNight->expenses->first()->amount))--}}
-{{--                        <button wire:click="$dispatch('openModal', { component: 'create-expense', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Expense' }})" class="btn btn-sm">Add Expense</button>--}}
-{{--                    @endif--}}
+                    @if(!isset($DateNight->expenses->first()->amount))
+                        <button wire:click="$dispatch('openModal', { component: 'create-expense', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Expense' }})" class="btn btn-sm">Add Expense</button>
+                    @endif
                     {{ optional($DateNight->expenses->first())->amount }}
                 </td>
                 <td>

@@ -7,7 +7,7 @@
             <div class="label">
                 <span class="label-text">Date</span>
             </div>
-        <input wire:model.live="date" id="date" class="input input-bordered w-full max-w-xs" type="date"  value="{{ date('Y/m/d') }}" required>
+        <input wire:model.live="date" id="date" class="input input-bordered w-full max-w-xs" type="date"  value="{{ date('Y-m-d') }}" required>
         </label>
         <label class="form-control w-full max-w-xs">
             <div class="label">

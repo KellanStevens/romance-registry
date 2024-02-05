@@ -8,7 +8,7 @@
             </div>
             <input wire:model.live="amount" inputmode="numeric" id="amount" type="number" placeholder="Amount" class="input input-bordered w-full max-w-xs" required/>
         </label>
-
+        <br>
         <div class="flex items-center justify-left">
             <button type="submit" class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">Save</button>
         </div>

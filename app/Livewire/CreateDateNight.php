@@ -5,13 +5,12 @@ namespace App\Livewire;
 use App\Models\DateNight;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class CreateDateNight extends Component
+class CreateDateNight extends ModalComponent
 {
-    public $date;
-    public $location;
-    public $googleMapsLink;
-    public $description;
+    public $date, $location, $googleMapsLink, $description;
+    public $title = 'Create Date Night';
 
     public function mount()
     {
@@ -41,6 +40,7 @@ class CreateDateNight extends Component
         ]);
 
         session()->flash('message', 'DateNight created successfully!');
-        $this->reset(); // Reset the form fields after saving
+
+        $this->closeModal();
     }
 }

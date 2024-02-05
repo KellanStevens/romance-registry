@@ -1,6 +1,8 @@
 <!-- resources/views/livewire/list-date-night.blade.php -->
 
 <div class="overflow-x-auto">
+    <button wire:click="$dispatch('openModal', { component: 'create-date-night', arguments: { title: 'Create Date Night' }})" class="btn btn-sm float-right">Add Date night</button>
+<br>
     <table class="table">
         <tbody>
         @foreach($this->dateNightsData() as $DateNight)
@@ -26,7 +28,7 @@
                         </div>
                     @elseif (Auth::id() != 2)
                         <div class="tooltip" data-tip="Daniel needs to add a rating">
-                            <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                            <button class="btn btn-sm btn-disabled"> Add a rating</button>
                         </div>
                     @else
                         <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-sm">Add Rating</button>
@@ -41,7 +43,7 @@
                         </div>
                     @elseif (Auth::id() != 1)
                         <div class="tooltip" data-tip="Kellan needs to add a rating">
-                            <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                            <button class="btn btn-sm btn-disabled"> Add a rating</button>
                         </div>
                     @else
                         <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-sm">Add Rating</button>
@@ -70,5 +72,10 @@
             <th class="">Expense</th>
             <th></th>
         </tr>
+        </thead>
     </table>
+{{--    <button class="btn btn-circle">--}}
+{{--        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>--}}
+{{--    </button>--}}
+
 </div>

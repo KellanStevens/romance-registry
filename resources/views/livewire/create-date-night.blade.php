@@ -1,7 +1,6 @@
-<!-- resources/views/livewire/create-date-night.blade.php -->
-
-<div>
-    <h1>Date Details:</h1>
+<div class="p-12 dark:bg-gray-800">
+    <h1 class="dark:text-white text-black">{{ $title }}</h1>
+    <br>
     <form wire:submit="store">
         <label class="form-control w-full max-w-xs">
             <div class="label">
@@ -29,7 +28,7 @@
             <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description" required></textarea>
         </label>
         <br>
-        <button class="btn" type="submit">Save Date</button>
+        <button class="btn" type="submit">Save</button>
     </form>
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>

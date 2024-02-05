@@ -19,7 +19,7 @@ Route::view('/', 'welcome')->name('welcome');
 // is authenticated and verified then run all views under it
  Route::middleware(['auth', 'verified'])->group(function () {
      Route::view('dashboard', 'dashboard')->name('dashboard');
-//     Route::view('dates', 'dates')->name('dates');
+     Route::view('date', 'date')->name('date');
      Route::view('rating', 'rating')->name('rating');
      Route::view('expense', 'expense')->name('expense');
      Route::view('profile', 'profile')->name('profile');

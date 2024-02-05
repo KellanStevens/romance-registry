@@ -7,7 +7,7 @@ use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class AddRating extends Component
+class CreateRating extends Component
 {
     public $dateId;
     public int $priceRating;
@@ -24,7 +24,7 @@ class AddRating extends Component
             $query->where('user_id', $user->id);
         })->get();
 
-        return view('livewire.add-rating', ['dates' => $dates]);
+        return view('livewire.create-rating', ['dates' => $dates]);
     }
 
     public function submitRating()

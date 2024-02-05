@@ -13,9 +13,6 @@ class EditDateNight extends ModalComponent
     public function mount()
     {
         $this->dateNight = DateNight::find($this->dateNightID);
-
-
-
     }
     public function render()
     {

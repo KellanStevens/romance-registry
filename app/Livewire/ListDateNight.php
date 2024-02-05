@@ -22,6 +22,7 @@ class ListDateNight extends Component
     {
         return DateNight::with(['ratings', 'expenses'])->get();
     }
+
     public function edit()
     {
         $this->showEditModal = true;

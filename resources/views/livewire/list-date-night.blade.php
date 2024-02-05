@@ -44,7 +44,7 @@
                     </td>
                 @endif
                 <td>
-                    <button class="btn btn-sm" href="{{ route('edit-date-night', ['dateNightId' => $DateNight->id]) }}">Edit Date</button>
+                    <a class="btn btn-sm" href="{{ route('edit-dates', ['dateNightId' => $DateNight->id]) }}">Edit Date</a>
                 </td>
             </tr>
         @endforeach

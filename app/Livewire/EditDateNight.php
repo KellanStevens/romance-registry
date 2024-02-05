@@ -7,13 +7,13 @@ use LivewireUI\Modal\ModalComponent;
 
 class EditDateNight extends ModalComponent
 {
-    public $dateNightID, $date, $location, $googleMapsLink, $description;
+    public $dateNightId, $date, $location, $googleMapsLink, $description;
 
-    public function mount($dateNightID)
+    public function mount($dateNightId)
     {
-        $dateNight = DateNight::findOrFail($dateNightID);
+        $dateNight = DateNight::findOrFail($dateNightId);
 
-        $this->dateNightID = $dateNight->id;
+        $this->dateNightId = $dateNight->id;
         $this->date = $dateNight->date;
         $this->location = $dateNight->location;
         $this->googleMapsLink = $dateNight->google_maps_link;
@@ -35,7 +35,7 @@ class EditDateNight extends ModalComponent
         ]);
 
         // Update the existing date night record in the database
-        DateNight::where('id', $this->dateNightID)->update([
+        DateNight::where('id', $this->dateNightId)->update([
             'date' => $this->date,
             'location' => $this->location,
             'google_maps_link' => $this->googleMapsLink,

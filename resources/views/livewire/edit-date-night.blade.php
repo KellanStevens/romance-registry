@@ -1,8 +1,9 @@
 <div class="p-12 dark:bg-gray-800">
+    <h3 class="heading">Edit Date Night</h3>
     <form wire:submit="update">
         <label class="form-control w-full max-w-xs">
             <div class="label">
-                <span class="label-text">Edit Date Night</span>
+                <span class="label-text">Date</span>
             </div>
         <input wire:model.live="date" id="date" class="input input-bordered w-full max-w-xs" type="date"  value="{{ $date }}" required>
         </label>
@@ -26,7 +27,7 @@
             <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description" value="{{ $description }}" required></textarea>
         </label>
         <br>
-        <button class="btn" type="submit">Save Date</button>
+        <button class="btn" type="submit">Save</button>
     </form>
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>

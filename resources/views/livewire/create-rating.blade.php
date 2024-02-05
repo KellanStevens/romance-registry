@@ -57,7 +57,7 @@
 
         <div class="mb-4">
             <label for="comments" class="block text-sm font-medium dark:text-white">Comment:</label>
-            <textarea wire:model="comment" id="comments" name="comments" rows="3" class="lg:w-auto textarea textarea-bordered mt-1 p-2 border border-gray-300 rounded-md w-full"></textarea>
+            <textarea wire:model="comment" id="comments" name="comments" rows="3" class="lg:w-auto textarea textarea-bordered mt-1 p-2 border rounded-md w-full"></textarea>
         </div>
 
         <div class="flex items-center justify-left">

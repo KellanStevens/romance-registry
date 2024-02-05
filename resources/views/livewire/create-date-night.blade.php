@@ -26,7 +26,7 @@
             <div class="label">
                 <span class="label-text">Description</span>
             </div>
-            <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24" placeholder="Description" required></textarea>
+            <textarea wire:model.live="description" id="description" class="lg:w-auto textarea textarea-bordered mt-1 p-2 border rounded-md w-full" placeholder="Description" required></textarea>
         </label>
         <br>
         <button class="btn" type="submit">Save Date</button>

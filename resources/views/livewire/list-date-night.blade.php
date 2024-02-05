@@ -44,7 +44,7 @@
                     </td>
                 @endif
                 <td>
-                    <button wire:click="$dispatch('openModal', { component: 'edit-date', arguments: { dateNightID: {{ $DateNight->id }} }})" class="btn btn-sm">Edit Date</button>
+                    <button class="btn btn-sm" href="{{ route('edit-date-night', ['dateNightId' => $DateNight->id]) }}">Edit Date</button>
                 </td>
             </tr>
         @endforeach

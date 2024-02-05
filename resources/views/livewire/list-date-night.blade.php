@@ -1,4 +1,4 @@
-<!-- resources/views/livewire/date-night-list.blade.php -->
+<!-- resources/views/livewire/list-date-night.blade.php -->
 
 <div class="overflow-x-auto">
     <table class="table">

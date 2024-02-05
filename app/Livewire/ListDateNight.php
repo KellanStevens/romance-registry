@@ -8,13 +8,13 @@ use Livewire\Component;
 use App\Models\DateNight;
 use App\Models\Rating;
 
-class DateNightList extends Component
+class ListDateNight extends Component
 {
     public $showEditModal = false;
 
     public function render()
     {
-        return view('livewire.date-night-list');
+        return view('livewire.list-date-night');
     }
 
     #[Computed()]

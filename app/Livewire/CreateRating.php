@@ -7,15 +7,12 @@ use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class CreateRating extends Component
+class CreateRating extends ModalComponent
 {
-    public $dateNightId;
-    public int $priceRating;
-    public int $settingRating;
-    public int $foodRating;
-
-    public string $comment = '';
+    public $dateNightId, $priceRating, $settingRating, $foodRating, $comment;
+    public $title = 'Edit Date Night';
 
     public function render()
     {
@@ -71,6 +68,6 @@ class CreateRating extends Component
             session()->flash('message', 'You have already rated this date night.');
         }
 
-        $this->reset();
+        $this->closeModal();
     }
 }

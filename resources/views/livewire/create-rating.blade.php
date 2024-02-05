@@ -1,4 +1,4 @@
-<div>
+<div class="p-12 dark:bg-gray-800">
     @if(count($this->dateNightsData()) <= 0)
         <div class="alert alert-error">
             <div class="flex-1">
@@ -9,21 +9,22 @@
             </div>
         </div>
     @else
+        <h1 class="text-white">{{ $title }}</h1>
     <form wire:submit.prevent="store">
-        <div>
-            <label for="dateNightId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium">Select Date to Rate:</label>
-            <div>
-                <select wire:model="dateNightId" class="select select-bordered w-full max-w-xs" id="dateNightId" name="dateNightId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-                    <option selected value="">Select a Date</option>
-                    @foreach($this->dateNightsData() as $dateNight)
-                        <option value="{{ $dateNight->id }}">{{ $dateNight->date }} [{{ $dateNight->location }}]</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+{{--        <div>--}}
+{{--            <label for="dateNightId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium">Select Date to Rate:</label>--}}
+{{--            <div>--}}
+{{--                <select wire:model="dateNightId" class="select select-bordered w-full max-w-xs" id="dateNightId" name="dateNightId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">--}}
+{{--                    <option selected value="">Select a Date</option>--}}
+{{--                    @foreach($this->dateNightsData() as $dateNight)--}}
+{{--                        <option value="{{ $dateNight->id }}">{{ $dateNight->date }} [{{ $dateNight->location }}]</option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <br>
         <div class="mb-4">
-            <label for="priceRating" class="block text-sm font-medium dark:text-white">Price Rating:</label>
+            <label for="priceRating" class="block text-sm font-medium">Price Rating:</label>
             <div class="rating rating-lg" wire:model="priceRating">
                 <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="1" />
                 <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="2" />
@@ -34,7 +35,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="settingRating" class="block text-sm font-medium dark:text-white">Setting Rating:</label>
+            <label for="settingRating" class="block text-sm font-medium">Setting Rating:</label>
             <div class="rating rating-lg" wire:model="settingRating">
                 <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="1" />
                 <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="2" />
@@ -45,7 +46,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="foodRating" class="block text-sm font-medium dark:text-white">Food Rating:</label>
+            <label for="foodRating" class="block text-sm font-medium">Food Rating:</label>
             <div class="rating rating-lg" wire:model="foodRating">
                 <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="1" />
                 <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="2" />
@@ -56,12 +57,12 @@
         </div>
 
         <div class="mb-4">
-            <label for="comments" class="block text-sm font-medium dark:text-white">Comment:</label>
-            <textarea wire:model="comment" id="comments" name="comments" rows="3" class="lg:w-auto textarea textarea-bordered mt-1 p-2 border rounded-md w-full"></textarea>
+            <label for="comments" class="block text-sm font-medium">Comment:</label>
+            <textarea wire:model="comment" id="comments" name="comments" rows="3" class="textarea textarea-bordered h-24 w-full max-w-xs"></textarea>
         </div>
 
         <div class="flex items-center justify-left">
-            <button type="submit" class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">Submit Rating</button>
+            <button type="submit" class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">Save</button>
         </div>
     </form>
     @if (session('message'))

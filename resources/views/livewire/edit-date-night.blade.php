@@ -1,5 +1,5 @@
 <div class="p-12 dark:bg-gray-800">
-    <h3 class="heading">Edit Date Night</h3>
+    <h1 class="text-white">{{ $title }}</h1>
     <form wire:submit="update">
         <label class="form-control w-full max-w-xs">
             <div class="label">
@@ -27,7 +27,7 @@
             <textarea wire:model.live="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description" value="{{ $description }}" required></textarea>
         </label>
         <br>
-        <button class="btn" type="submit">Save</button>
+        <button class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800" type="submit">Save</button>
     </form>
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>

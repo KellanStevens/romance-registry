@@ -22,8 +22,12 @@
                         Food:    {{ optional($DateNight->ratings->where('user_id', 2)->first())->food_rating }}
                         Setting: {{ optional($DateNight->ratings->where('user_id', 2)->first())->setting_rating }}
                         Price:   {{ optional($DateNight->ratings->where('user_id', 2)->first())->price_rating }}
+                    @elseif (Auth::id() != 2)
+                        <div class="tooltip" data-tip="Daniel needs to add a rating">
+                            <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                        </div>
                     @else
-                        <button class="btn" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                        <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-sm">Add Rating</button>
                     @endif
                 </td>
                 <td class="px-6 py-4">
@@ -31,20 +35,22 @@
                         Food:    {{ optional($DateNight->ratings->where('user_id', 1)->first())->food_rating }}
                         Setting: {{ optional($DateNight->ratings->where('user_id', 1)->first())->setting_rating }}
                         Price:   {{ optional($DateNight->ratings->where('user_id', 1)->first())->price_rating }}
+                    @elseif (Auth::id() != 1)
+                        <div class="tooltip" data-tip="Kellan needs to add a rating">
+                            <button class="btn btn-sm btn-disabled" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                        </div>
                     @else
-                        <button class="btn" href="{{ route('rating') }}" wire:navigate> Add a rating</button>
+                        <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-sm">Add Rating</button>
                     @endif
                 </td>
                 <td class="px-6 py-4">
+{{--                    @if(!isset($DateNight->expenses->first()->amount))--}}
+{{--                        <button wire:click="$dispatch('openModal', { component: 'create-expense', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Expense' }})" class="btn btn-sm">Add Expense</button>--}}
+{{--                    @endif--}}
                     {{ optional($DateNight->expenses->first())->amount }}
                 </td>
-                @if($DateNight->ratings->where('user_id', Auth::id()) == null)
-                    <td class="px-6 py-4">
-                        @livewire('add-rating', ['dateId' => $DateNight->id])
-                    </td>
-                @endif
                 <td>
-                    <button wire:click="$dispatch('openModal', { component: 'edit-date-night', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-sm">Edit</button>
+                    <button wire:click="$dispatch('openModal', { component: 'edit-date-night', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Edit Date Night' }})" class="btn btn-sm">Edit</button>
                 </td>
             </tr>
         @endforeach

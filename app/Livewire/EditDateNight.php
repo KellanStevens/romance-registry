@@ -8,6 +8,7 @@ use LivewireUI\Modal\ModalComponent;
 class EditDateNight extends ModalComponent
 {
     public $dateNightId, $date, $location, $googleMapsLink, $description;
+    public $title = 'Edit Date Night';
 
     public function mount($dateNightId)
     {

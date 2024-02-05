@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\DateNight;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class CreateRating extends Component
@@ -13,23 +14,35 @@ class CreateRating extends Component
     public int $priceRating;
     public int $settingRating;
     public int $foodRating;
-    public string $comment;
+    public string $comment = '';
 
     public function render()
     {
-        /* Get all dates that the user has not rated */
+        return view('livewire.create-rating');
+    }
+
+    #[Computed()]
+    public function dateNightsData()
+    {
+        /* List all date nights that the user has not rated */
         $user = Auth::user();
 
-        $dates = DateNight::whereDoesntHave('ratings', function ($query) use ($user) {
+        return DateNight::whereDoesntHave('ratings', function ($query) use ($user) {
             $query->where('user_id', $user->id);
         })->get();
-
-        return view('livewire.create-rating', ['dates' => $dates]);
     }
 
     public function store()
     {
         /* Validate the form and submit rating */
+
+        $this->validate([
+            'dateNightId' => 'required',
+            'priceRating' => 'required|integer',
+            'settingRating' => 'required|integer',
+            'foodRating' => 'required|integer',
+            'comment' => 'nullable|string'
+        ]);
 
         // Check if a date has been selected
         if (!$this->dateNightId) {
@@ -38,14 +51,14 @@ class CreateRating extends Component
         }
 
         // Check if the user has already rated this date
-        $existingRating = Rating::where('date_id', $this->dateId)
+        $existingRating = Rating::where('date_night_id', $this->dateNightId)
             ->where('user_id', Auth::id())
             ->first();
 
         if (!$existingRating) {
             Rating::create([
                 'user_id' => Auth::id(),
-                'date_night_id' => $this->dateId,
+                'date_night_id' => $this->dateNightId,
                 'price_rating' => $this->priceRating,
                 'setting_rating' => $this->settingRating,
                 'food_rating' => $this->foodRating,
@@ -54,7 +67,7 @@ class CreateRating extends Component
 
             session()->flash('message', 'Rating added successfully!');
         } else {
-            session()->flash('message', 'You have already rated this date.');
+            session()->flash('message', 'You have already rated this date night.');
         }
 
         $this->reset();

@@ -4,8 +4,8 @@
             <label for="selectedDateNightId" class="lg:w-auto dark:bg-gray-800 dark:text-white block text-sm font-medium text-gray-700">Select Date to Rate:</label>
             <select wire:model="dateNightId" class="select select-bordered w-full max-w-xs" id="dateNightId" name="dateNightId" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
                 <option selected value="">Select a Date</option>
-                @foreach($dates as $date)
-                    <option value="{{ $date->id }}">{{ $date->date }} [{{ $date->location }}]</option>
+                @foreach($this->dateNightsData as $dateNight)
+                    <option value="{{ $dateNight->id }}">{{ $dateNight->date }} [{{ $dateNight->location }}]</option>
                 @endforeach
             </select>
         </div>

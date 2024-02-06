@@ -1,5 +1,5 @@
 # GithHub Actions Workflow generated with Ghygen
-# Original configuration: https://ghygen.hi-folks.dev?code=996468f9f8f1263aabb31849c4263ad8
+# Original configuration: https://ghygen.hi-folks.dev?code=4fc3b8dd92be479b27c2354d9cbf264a
 name: Template - Laravel application (Mysql)
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: [ '8.2','8.1' ]
+        php-versions: [ '8.2' ]
         dependency-stability: [ 'prefer-none' ]
 
         laravel: [ '10.*' ]
@@ -48,7 +48,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '21.x'
       - name: Cache node_modules directory
         uses: actions/cache@v3
         id: node_modules-cache

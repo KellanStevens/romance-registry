@@ -1,12 +1,10 @@
 # GithHub Actions Workflow generated with Ghygen
-# Original configuration: https://ghygen.hi-folks.dev?code=4fc3b8dd92be479b27c2354d9cbf264a
+# Original configuration: https://ghygen.hi-folks.dev?code=b39bac2beaa10a271c5928f33a12a399
 name: Template - Laravel application (Mysql)
 on:
   push:
     branches:
       - main
-      - develop
-      - features/**
 
 jobs:
   laravel-tests:
@@ -34,7 +32,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest]
         php-versions: [ '8.2' ]
-        dependency-stability: [ 'prefer-none' ]
+        dependency-stability: [ 'prefer-stable' ]
 
         laravel: [ '10.*' ]
         include:
@@ -125,6 +123,15 @@ jobs:
 
         run: vendor/bin/phpunit --testdox
 
+      - name: Execute tests (Unit and Feature tests) via PestPHP
+        # Set environment
+        env:
+          DB_CONNECTION: mysql
+          DB_DATABASE: daniel_kellan
+          DB_PORT: 3306
+          DB_USER: root
+
+        run: vendor/bin/pest
 
 
       - name: Execute Code Sniffer via phpcs

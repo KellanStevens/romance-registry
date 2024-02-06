@@ -10,7 +10,8 @@ use LivewireUI\Modal\ModalComponent;
 
 class CreateExpense extends ModalComponent
 {
-    public $dateNightId, $amount;
+    public $dateNightId;
+    public $amount;
 
     public $title = 'Add Expense';
 

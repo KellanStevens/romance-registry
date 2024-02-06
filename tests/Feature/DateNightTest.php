@@ -7,13 +7,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\DateNight;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase; // Add this import statement
+
 // Remove the duplicate import statement for InteractsWithDatabase
 class DateNightTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function testExample(): void
     {
         $response = $this->get('/');
 
@@ -23,7 +24,7 @@ class DateNightTest extends TestCase
     /**
      * Test if DateNight can be created.
      */
-    public function test_can_create_date_night(): void
+    public function testCanCreateDateNight(): void
     {
         $DateNight = DateNight::factory()->create();
 
@@ -36,7 +37,7 @@ class DateNightTest extends TestCase
     /**
      * Test if DateNight can be updated.
      */
-    public function test_can_update_date_night(): void
+    public function testCanUpdateDateNight(): void
     {
         $DateNight = DateNight::factory()->create();
 
@@ -54,13 +55,12 @@ class DateNightTest extends TestCase
     /**
      * Test if DateNight can be deleted.
      */
-    public function test_can_delete_date_night(): void
+    public function testCanDeleteDateNight(): void
     {
         $DateNight = DateNight::factory()->create();
 
         $DateNight->delete();
 
         $this->assertDatabaseMissing('date_nights', ['id' => $DateNight->id]);
-
     }
 }

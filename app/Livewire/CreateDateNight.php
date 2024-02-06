@@ -9,7 +9,10 @@ use LivewireUI\Modal\ModalComponent;
 
 class CreateDateNight extends ModalComponent
 {
-    public $date, $location, $googleMapsLink, $description;
+    public $date;
+    public $location;
+    public $googleMapsLink;
+    public $description;
     public $title = 'Create Date Night';
 
     public function mount()

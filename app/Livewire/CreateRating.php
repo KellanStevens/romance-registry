@@ -11,7 +11,11 @@ use LivewireUI\Modal\ModalComponent;
 
 class CreateRating extends ModalComponent
 {
-    public $dateNightId, $priceRating, $settingRating, $foodRating, $comment;
+    public $dateNightId;
+    public $priceRating;
+    public $settingRating;
+    public $foodRating;
+    public $comment;
     public $title = 'Edit Date Night';
 
     public function render()

@@ -1,4 +1,4 @@
-# GithHub Actions Workflow generated with Ghygen
+# GitHub Actions Workflow generated with Ghygen
 # Original configuration: https://ghygen.hi-folks.dev?code=b39bac2beaa10a271c5928f33a12a399
 name: Template - Laravel application (Mysql)
 on:

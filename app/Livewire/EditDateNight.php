@@ -7,10 +7,14 @@ use LivewireUI\Modal\ModalComponent;
 
 class EditDateNight extends ModalComponent
 {
-    public $dateNightId, $date, $location, $googleMapsLink, $description;
+    public $dateNightId;
+    public $date;
+    public $location;
+    public $googleMapsLink;
+    public $description;
     public $title = 'Edit Date Night';
 
-    public function mount($dateNightId)
+    public function mount($dateNightId): void
     {
         $dateNight = DateNight::findOrFail($dateNightId);
 
@@ -26,7 +30,7 @@ class EditDateNight extends ModalComponent
         return view('livewire.edit-date-night');
     }
 
-    public function update()
+    public function update(): void
     {
         $this->validate([
             'date' => 'required|date',

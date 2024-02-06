@@ -8,7 +8,7 @@
             />
 
             <span class="text-sm font-semibold text-negative-800 dark:text-negative-600">
-                {{ str_replace('{errors}', $count($errors), $title) }}
+                {{ str_replace('{errors}', count($errors), $title) }}
             </span>
         </div>
 

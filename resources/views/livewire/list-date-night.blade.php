@@ -51,9 +51,10 @@
                 </td>
                 <td class="px-6 py-4">
                     @if(!isset($DateNight->expenses->first()->amount))
-                        <button wire:click="$dispatch('openModal', { component: 'create-expense', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Expense' }})" class="btn btn-sm">Add Expense</button>
+                        <button wire:click="$dispatch('openModal', { component: 'form-expense', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-sm">Add Expense</button>
+                    @else
+                        <button wire:click="$dispatch('openModal', { component: 'form-expense', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-link">{{ $DateNight->expenses->first()->amount }}</button>
                     @endif
-                    {{ optional($DateNight->expenses->first())->amount }}
                 </td>
                 <td>
                     <button wire:click="$dispatch('openModal', { component: 'form-date-night', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-sm">Edit</button>

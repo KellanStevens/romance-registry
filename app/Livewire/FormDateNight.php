@@ -4,9 +4,7 @@ namespace App\Livewire;
 
 use AllowDynamicProperties;
 use App\Models\DateNight;
-use Illuminate\View\View;
 use Livewire\Attributes\Rule;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 #[AllowDynamicProperties] class FormDateNight extends ModalComponent
@@ -17,15 +15,15 @@ use LivewireUI\Modal\ModalComponent;
     #[Rule('required|string|max:100')]
     public $location;
 
-    #[Rule('url|nullable|max:255|')]
+    #[Rule('nullable|url|max:255|')]
     public $google_maps_link;
 
     #[Rule('nullable|string|max:255')]
     public $description;
 
-    public $title;
-
     public $dateNightId;
+
+    public $title;
 
     public function mount($dateNightId = null): void
     {

@@ -46,14 +46,16 @@
             {{ $prepend }}
         @endif
 
-        <textarea {{ $attributes->class([
-            $getInputClasses($hasError),
-        ])->merge([
-            'autocomplete' => 'off',
-            'rows'         => 4
-        ]) }}>{{ $slot }}</textarea>
+            <label>
+<textarea {{ $attributes->class([
+    $getInputClasses($hasError),
+])->merge([
+    'autocomplete' => 'off',
+    'rows'         => 4
+]) }}>{{ $slot }}</textarea>
+            </label>
 
-        @if ($suffix || $rightIcon || ($hasError && !$append))
+            @if ($suffix || $rightIcon || ($hasError && !$append))
             <div class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($rightIcon)

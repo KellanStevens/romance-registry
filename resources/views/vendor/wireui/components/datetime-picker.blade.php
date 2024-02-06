@@ -117,11 +117,13 @@
                             x-on:click="monthsPicker = !monthsPicker"
                             type="button">
                     </button>
-                    <input class="w-14 appearance-none p-0 ring-0 border-none focus:ring-0 focus:outline-none dark:bg-secondary-800"
-                           x-model="year"
-                           x-on:input.debounce.500ms="fillPickerDates"
-                           type="number"
-                    />
+                    <label>
+                        <input class="w-14 appearance-none p-0 ring-0 border-none focus:ring-0 focus:outline-none dark:bg-secondary-800"
+                               x-model="year"
+                               x-on:input.debounce.500ms="fillPickerDates"
+                               type="number"
+                        />
+                    </label>
                 </div>
 
                 <x-dynamic-component

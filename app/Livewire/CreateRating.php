@@ -23,7 +23,7 @@ class CreateRating extends ModalComponent
         return view('livewire.create-rating');
     }
 
-    #[Computed()]
+    #[Computed]
     public function dateNightsData()
     {
         /* List all date nights that the user has not rated */

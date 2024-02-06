@@ -45,14 +45,16 @@
             {{ $prepend }}
         @endif
 
-        <input {{ $attributes->class([
-                $getInputClasses($hasError),
-            ])->merge([
-                'type'         => 'text',
-                'autocomplete' => 'off',
-            ]) }} />
+            <label>
+                <input {{ $attributes->class([
+                        $getInputClasses($hasError),
+                    ])->merge([
+                        'type'         => 'text',
+                        'autocomplete' => 'off',
+                    ]) }} />
+            </label>
 
-        @if ($suffix || $rightIcon || ($hasError && !$append))
+            @if ($suffix || $rightIcon || ($hasError && !$append))
             <div class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($rightIcon)

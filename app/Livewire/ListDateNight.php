@@ -17,7 +17,7 @@ class ListDateNight extends Component
         return view('livewire.list-date-night');
     }
 
-    #[Computed()]
+    #[Computed]
     public function dateNightsData()
     {
         return DateNight::with(['ratings', 'expenses'])->get();

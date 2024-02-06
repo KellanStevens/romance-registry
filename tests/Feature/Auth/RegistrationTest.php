@@ -11,7 +11,7 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered(): void
+    public function testRegistrationScreenCanBeRendered(): void
     {
         $response = $this->get('/register');
 
@@ -20,7 +20,7 @@ class RegistrationTest extends TestCase
             ->assertSeeVolt('pages.auth.register');
     }
 
-    public function test_new_users_can_register(): void
+    public function testNewUsersCanRegister(): void
     {
         $component = Volt::test('pages.auth.register')
             ->set('name', 'Test User')

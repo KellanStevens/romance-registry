@@ -20,7 +20,7 @@ class CreateExpense extends ModalComponent
         return view('livewire.create-expense');
     }
 
-    #[Computed()]
+    #[Computed]
     public function dateNightsData()
     {
         /* Get all dates don't have an expense */

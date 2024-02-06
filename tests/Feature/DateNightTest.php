@@ -42,10 +42,10 @@ class DateNightTest extends TestCase
 
         $this->assertDatabaseHas('date_nights', ['id' => $DateNight->id]);
 
-        $DateNight->Location = 'Updated DateNight Name';
+        $DateNight->Location = 'Updated DateNight Location';
         $DateNight->save();
 
-        $this->assertDatabaseHas('date_nights', ['Location' => 'Updated DateNight Name']);
+        $this->assertDatabaseHas('date_nights', ['Location' => 'Updated DateNight Location']);
 
         // Delete the DateNight
         $DateNight->delete();

@@ -11,12 +11,12 @@ class DateNight extends Model
 
     protected $fillable = ['date', 'location', 'google_maps_link', 'description'];
 
-    public function expenses()
+    public function expense()
     {
         return $this->hasMany(Expense::class);
     }
 
-    public function ratings()
+    public function rating()
     {
         return $this->hasMany(Rating::class);
     }

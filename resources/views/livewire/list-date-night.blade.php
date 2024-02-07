@@ -16,25 +16,35 @@
                         <dd class="sm:table-cell text-gray-500"> {{ $DateNight->date }} </dd>
                     </dl>
                     <a href="{{ $DateNight->google_maps_link }}" target="_blank">{{ $DateNight->location }} </a>
+                    <div class="sm:table-cell lg:hidden">
+                        <button wire:click="$dispatch('openModal', { component: 'form-date-night', arguments: { dateNightId: {{ $DateNight->id }} }})" ><x-fas-edit class="h-3"/></button>
+                    </div>
                 </td>
                 <td class="px-6 py-4 hidden lg:table-cell">{{ $DateNight->description }}</td>
                 @foreach([1, 2] as $userId)
                     <td class="px-6 py-4 hidden lg:table-cell">
                         @php
                             $userRating = $DateNight->ratings->where('user_id', $userId)->first();
+                            $authId = Auth::id();
                         @endphp
                         @if($userRating)
-                            <div class="tooltip" data-tip="{{ $userRating->comments }}">
-                                <div class="flex justify-start">Food: {{ $userRating->food_rating }}</div>
-                                <div class="flex justify-start">Setting: {{ $userRating->setting_rating }}</div>
-                                <div class="flex justify-start">Price: {{ $userRating->price_rating }}</div>
-                            </div>
+                                @if($authId == $userId)
+                                <button wire:click="$dispatch('openModal', { component: 'form-rating', arguments: { dateNightId: {{ $DateNight->id }} }})">
+                                @else
+                                    <button disabled>
+                                @endif
+                                <div class="tooltip" data-tip="{{ $userRating->comments }}">
+                                    <div class="flex justify-start">Food: {{ $userRating->food_rating }}</div>
+                                    <div class="flex justify-start">Setting: {{ $userRating->setting_rating }}</div>
+                                    <div class="flex justify-start">Price: {{ $userRating->price_rating }}</div>
+                                </div>
+                            </button>
                         @elseif (Auth::id() != $userId)
                             <div class="tooltip" data-tip="{{ $userId === 1 ? 'Kellan' : 'Daniel' }} needs to add a rating">
                                 <button class="btn btn-sm btn-disabled">Add a rating</button>
                             </div>
                         @else
-                            <button wire:click="$dispatch('openModal', { component: 'form-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-sm">Add Rating</button>
+                            <button wire:click="$dispatch('openModal', { component: 'form-rating', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-sm">Add Rating</button>
                         @endif
                     </td>
                 @endforeach
@@ -54,7 +64,7 @@
                             <button class="btn btn-xs btn-disabled">Add</button>
                         </div>
                     @else
-                        <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-xs">Add</button>
+                        <button wire:click="$dispatch('openModal', { component: 'form-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-xs">Add</button>
                     @endif
 
                     @if($danielRating)
@@ -66,7 +76,7 @@
                             <button class="btn btn-xs btn-disabled">Add</button>
                         </div>
                     @else
-                        <button wire:click="$dispatch('openModal', { component: 'create-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-xs">Add</button>
+                        <button wire:click="$dispatch('openModal', { component: 'form-rating', arguments: { dateNightId: {{ $DateNight->id }}, title: 'Add Rating' }})" class="btn btn-xs">Add</button>
                     @endif
                 </td>
                 <td class="px-6 py-4">
@@ -76,8 +86,8 @@
                         <button wire:click="$dispatch('openModal', { component: 'form-expense', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-link">{{ $DateNight->expenses->first()->amount }}</button>
                     @endif
                 </td>
-                <td>
-                    <button wire:click="$dispatch('openModal', { component: 'form-date-night', arguments: { dateNightId: {{ $DateNight->id }} }})" class="btn btn-sm">Edit</button>
+                <td class="hidden sm:hidden lg:table-cell">
+                    <button wire:click="$dispatch('openModal', { component: 'form-date-night', arguments: { dateNightId: {{ $DateNight->id }} }})" ><x-fas-edit class="h-3"/></button>
                 </td>
             </tr>
         @endforeach

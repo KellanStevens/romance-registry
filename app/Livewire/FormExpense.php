@@ -29,9 +29,8 @@ class FormExpense extends ModalComponent
     public function mount($dateNightId = null): void
     {
         $this->dateNightId = $dateNightId;
-        $this->title = $dateNightId ? 'Edit Expense' : 'Create Expense';
-
         $this->expense = Expense::where('date_night_id', $this->dateNightId)->first();
+        $this->title = $this->expense ? 'Edit Expense' : 'Create Expense';
 
         if ($this->expense) {
             $this->amount = $this->expense->amount;

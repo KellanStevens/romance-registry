@@ -72,23 +72,6 @@ class FormExpense extends ModalComponent
         session()->flash('message', 'Expense added successfully!');
         $this->closeModal();
     }
-//    public function storeOrUpdate(): void
-//    {
-//        $validated = $this->validate();
-//
-//        if ($this->expense) {
-//            Expense::where('date_night_id', $this->dateNightId)->update($validated);
-//            session()->flash('message', 'Expense updated successfully!');
-//        } else {
-//            Expense::create([
-//                'date_night_id' => $this->dateNightId,
-//                'amount' => $this->amount,
-//            ]);
-//            session()->flash('message', 'Expense added successfully!');
-//        }
-//
-//        $this->closeModal();
-//    }
 
     public function submit(): void
     {

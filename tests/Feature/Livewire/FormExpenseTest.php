@@ -95,18 +95,18 @@ it('does not render the delete button when creating an expense', function () {
 });
 
 it('deletes the expense', function () {
-    $expense = Expense::factory()->create([
-        'date_night_id' => $this->dateNight->id,
-        'amount' => 100,
-    ]);
-
     Livewire::test(FormExpense::class)
         ->set('dateNightId', $this->dateNight->id)
-        ->set('expenseId', $expense->id)
-        ->call('delete');
+        ->set('amount', 100)
+        ->set('expense', Expense::create([
+            'date_night_id' => $this->dateNight->id,
+            'amount' => 100,
+        ]))
+        ->call('delete')
+        ->assertHasNoErrors();
 
     $this->assertDatabaseMissing('expenses', [
         'date_night_id' => $this->dateNight->id,
-        'amount' => 100.00
+        'amount' => 100
     ]);
 });

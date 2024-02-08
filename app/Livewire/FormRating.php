@@ -24,6 +24,7 @@ class FormRating extends ModalComponent
     public $comments;
 
     public $title;
+
     public $dateNightId;
 
     public $rating;

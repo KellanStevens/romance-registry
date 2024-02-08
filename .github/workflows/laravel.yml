@@ -113,16 +113,6 @@ jobs:
         run: php --version
 
       # Code quality
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        # Set environment
-        env:
-          DB_CONNECTION: mysql
-          DB_DATABASE: daniel_kellan
-          DB_PORT: 3306
-          DB_USER: root
-
-        run: vendor/bin/phpunit --testdox
-
       - name: Execute tests (Unit and Feature tests) via PestPHP
         # Set environment
         env:

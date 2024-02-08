@@ -65,7 +65,7 @@ it('stores the expense', function () {
 
     $this->assertDatabaseHas('expenses', [
         'date_night_id' => $dateNightId,
-        'amount' => 100
+        'amount' => 100.00
     ]);
 });
 
@@ -78,7 +78,7 @@ it('updates the expense', function () {
 
     $this->assertDatabaseHas('expenses', [
         'id' => $expense->id,
-        'amount' => 200
+        'amount' => 200.00
     ]);
 });
 
@@ -107,6 +107,7 @@ it('deletes the expense', function () {
 
     $this->assertDatabaseMissing('expenses', [
         'date_night_id' => $this->dateNight->id,
-        'amount' => 100,
+        'amount' => 100.00
+        ,
     ]);
 });

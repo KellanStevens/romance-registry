@@ -108,6 +108,5 @@ it('deletes the expense', function () {
     $this->assertDatabaseMissing('expenses', [
         'date_night_id' => $this->dateNight->id,
         'amount' => 100.00
-        ,
     ]);
 });

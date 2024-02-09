@@ -2,42 +2,21 @@
     <h1 class="dark:text-white text-black">{{ $title }}</h1>
     <form wire:submit.prevent="storeOrUpdate">
         <br>
-        <div class="mb-4">
-            <label for="priceRating" class="block text-sm font-medium">Price Rating:</label>
-            <div class="rating rating-lg" wire:model.lazy="price_rating">
-                <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="1" />
-                <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="2" />
-                <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="3" />
-                <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="4" />
-                <input type="radio" name="priceRating" id="priceRating" class="mask mask-star" wire:model="priceRating" value="5" />
-            </div>
-        </div>
 
-        <div class="mb-4">
-            <label for="settingRating" class="block text-sm font-medium">Setting Rating:</label>
-            <div class="rating rating-lg" wire:model.lazy="setting_rating">
-                <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="1" />
-                <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="2" />
-                <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="3" />
-                <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="4" />
-                <input type="radio" name="settingRating" id="settingRating" class="mask mask-star" wire:model="settingRating" value="5" />
+        @foreach(['price', 'setting', 'food'] as $ratingName)
+            <div class="mb-4">
+                <label for="{{ $ratingName }}Rating" class="block text-sm font-medium">{{ ucfirst($ratingName) }} Rating:</label>
+                <div class="rating rating-lg">
+                    @for($i = 1; $i <= 5; $i++)
+                        <input type="radio" name="{{ $ratingName }}Rating" id="{{ $ratingName }}Rating" class="mask mask-star" wire:model="{{ $ratingName }}Rating" value="{{ $i }}" @if($i == ${$ratingName.'Rating'}) checked @endif />
+                    @endfor
+                </div>
             </div>
-        </div>
-
-        <div class="mb-4">
-            <label for="foodRating" class="block text-sm font-medium">Food Rating:</label>
-            <div class="rating rating-lg" wire:model.lazy="food_rating">
-                <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="1" />
-                <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="2" />
-                <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="3" />
-                <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="4" />
-                <input type="radio" name="foodRating" id="foodRating" class="mask mask-star" wire:model="foodRating" value="5" />
-            </div>
-        </div>
+        @endforeach
 
         <div class="mb-4">
             <label for="comments" class="block text-sm font-medium">Comment:</label>
-            <textarea wire:model.lazy="comment" id="comments" name="comments" rows="3" class="textarea textarea-bordered h-24 w-full max-w-xs"></textarea>
+            <textarea wire:model.lazy="comments" id="comments" name="comments" rows="3" class="textarea textarea-bordered h-24 w-full max-w-xs"></textarea>
         </div>
 
         <div class="flex items-center justify-left">
@@ -46,6 +25,9 @@
     </form>
     @if (session('message'))
         <div class="mt-4 text-green-500">{{ session('message') }}</div>
+    @endif
+    @if (session('error'))
+        <div class="mt-4 text-green-500">{{ session('error') }}</div>
     @endif
     <div wire:offline>
         <div role="alert" class="alert alert-error">

@@ -12,13 +12,13 @@ use LivewireUI\Modal\ModalComponent;
 class FormRating extends ModalComponent
 {
     #[Rule('required|integer|between:1,5')]
-    public $price_rating;
+    public $priceRating;
 
     #[Rule('required|integer|between:1,5')]
-    public $setting_rating;
+    public $settingRating;
 
     #[Rule('required|integer|between:1,5')]
-    public $food_rating;
+    public $foodRating;
 
     #[Rule('nullable|string|max:255')]
     public $comments;
@@ -48,14 +48,14 @@ class FormRating extends ModalComponent
         $this->title = $this->rating ? 'Edit Rating' : 'Create Rating';
 
         if ($this->rating) {
-            $this->price_rating = $this->rating->price_rating;
-            $this->setting_rating = $this->rating->setting_rating;
-            $this->food_rating = $this->rating->food_rating;
+            $this->priceRating = $this->rating->price_rating;
+            $this->settingRating = $this->rating->setting_rating;
+            $this->foodRating = $this->rating->food_rating;
             $this->comments = $this->rating->comments;
         } else {
-            $this->price_rating = 0;
-            $this->setting_rating = 0;
-            $this->food_rating = 0;
+            $this->priceRating = 0;
+            $this->settingRating = 0;
+            $this->foodRating = 0;
             $this->comments = '';
         }
     }
@@ -72,16 +72,23 @@ class FormRating extends ModalComponent
         if ($this->rating) {
             Rating::where('date_night_id', $this->dateNightId)
                 ->where('user_id', Auth::id())
-                ->update($validated);
+                ->update(
+                    [
+                        'price_rating' => $this->priceRating,
+                        'setting_rating' => $this->settingRating,
+                        'food_rating' => $this->foodRating,
+                        'comments' => $this->comments,
+                    ]
+                );
             session()->flash('message', 'Rating updated successfully!');
         } else {
             Rating::create([
                 'user_id' => Auth::id(),
                 'date_night_id' => $this->dateNightId,
-                'price_rating' => $this->price_rating,
-                'setting_rating' => $this->setting_rating,
-                'food_rating' => $this->food_rating,
-                'comment' => $this->comments,
+                'price_rating' => $this->priceRating,
+                'setting_rating' => $this->settingRating,
+                'food_rating' => $this->foodRating,
+                'comments' => $this->comments,
             ]);
             session()->flash('message', 'Rating created successfully!');
         }

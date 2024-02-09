@@ -28,36 +28,24 @@ class FormRating extends ModalComponent
     public $dateNightId;
 
     public $rating;
-    #[Computed]
-    public function dateNightsData()
-    {
-        /* List all date nights that the user has not rated */
-        $user = Auth::user();
-
-        return DateNight::whereDoesntHave('ratings', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })->get();
-    }
 
     public function mount($dateNightId = null): void
     {
+        if ($dateNightId === null || !DateNight::where('id', $dateNightId)->exists()) {
+            // If dateNightId is null or does not exist in the DateNight table, throw an error
+            $this->addError('dateNightId', 'Invalid Date Night ID.');
+        }
+
         $this->dateNightId = $dateNightId;
         $this->rating = Rating::where('date_night_id', $dateNightId)
             ->where('user_id', Auth::id())
             ->first();
         $this->title = $this->rating ? 'Edit Rating' : 'Create Rating';
 
-        if ($this->rating) {
-            $this->priceRating = $this->rating->price_rating;
-            $this->settingRating = $this->rating->setting_rating;
-            $this->foodRating = $this->rating->food_rating;
-            $this->comments = $this->rating->comments;
-        } else {
-            $this->priceRating = 0;
-            $this->settingRating = 0;
-            $this->foodRating = 0;
-            $this->comments = '';
-        }
+        $this->priceRating = $this->rating ? $this->rating->price_rating : 0;
+        $this->settingRating = $this->rating ? $this->rating->setting_rating : 0;
+        $this->foodRating = $this->rating ? $this->rating->food_rating : 0;
+        $this->comments = $this->rating ? $this->rating->comments : '';
     }
 
     public function render()
@@ -65,34 +53,72 @@ class FormRating extends ModalComponent
         return view('livewire.form-rating');
     }
 
-    public function storeOrUpdate(): void
+    public function update(): void
     {
-        $validated = $this->validate();
+        $this->validate([
+            'dateNightId' => 'required|exists:date_nights,id',
+            'priceRating' => 'required|integer|between:1,5',
+            'settingRating' => 'required|integer|between:1,5',
+            'foodRating' => 'required|integer|between:1,5',
+            'comments' => 'nullable|string|max:255',
+        ]);
+        $this->authorize('update', $this->rating);
+        $this->rating->update([
+            'price_rating' => $this->priceRating,
+            'setting_rating' => $this->settingRating,
+            'food_rating' => $this->foodRating,
+            'comments' => $this->comments,
+        ]);
+        session()->flash('message', 'Rating updated successfully!');
+        $this->closeModal();
+    }
 
+    public function store():void
+    {
+        $this->validate([
+            'dateNightId' => 'required|exists:date_nights,id',
+            'priceRating' => 'required|integer|between:1,5',
+            'settingRating' => 'required|integer|between:1,5',
+            'foodRating' => 'required|integer|between:1,5',
+            'comments' => 'nullable|string|max:255',
+        ]);
+        Rating::create([
+            'user_id' => Auth::id(),
+            'date_night_id' => $this->dateNightId,
+            'price_rating' => $this->priceRating,
+            'setting_rating' => $this->settingRating,
+            'food_rating' => $this->foodRating,
+            'comments' => $this->comments,
+        ]);
+        session()->flash('message', 'Rating created successfully!');
+        $this->closeModal();
+    }
+
+    public function submit(): void
+    {
         if ($this->rating) {
-            Rating::where('date_night_id', $this->dateNightId)
-                ->where('user_id', Auth::id())
-                ->update(
-                    [
-                        'price_rating' => $this->priceRating,
-                        'setting_rating' => $this->settingRating,
-                        'food_rating' => $this->foodRating,
-                        'comments' => $this->comments,
-                    ]
-                );
-            session()->flash('message', 'Rating updated successfully!');
+            $this->update();
         } else {
-            Rating::create([
-                'user_id' => Auth::id(),
-                'date_night_id' => $this->dateNightId,
-                'price_rating' => $this->priceRating,
-                'setting_rating' => $this->settingRating,
-                'food_rating' => $this->foodRating,
-                'comments' => $this->comments,
-            ]);
-            session()->flash('message', 'Rating created successfully!');
+            $this->store();
         }
+    }
 
+    public function delete(): void
+    {
+        $this->validate([
+            'dateNightId' => 'required|exists:date_nights,id',
+            'priceRating' => 'required|integer|between:1,5',
+            'settingRating' => 'required|integer|between:1,5',
+            'foodRating' => 'required|integer|between:1,5',
+            'comments' => 'nullable|string|max:255',
+        ]);
+        $this->authorize('delete', $this->rating);
+        if ($this->rating) {
+            $this->rating->delete();
+            session()->flash('message', 'Rating deleted successfully!');
+        } else {
+            session()->flash('error', 'No rating to delete!');
+        }
         $this->closeModal();
     }
 }

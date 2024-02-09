@@ -55,7 +55,6 @@ class FormExpense extends ModalComponent
             'amount' => $this->amount,
         ]);
         session()->flash('message', 'Expense updated successfully!');
-
         $this->closeModal();
     }
 
@@ -87,14 +86,12 @@ class FormExpense extends ModalComponent
             'dateNightId' => 'required|exists:date_nights,id',
             'amount' => 'required|numeric|between:0,9999.99',
         ]);
-
         if ($this->expense) {
             $this->expense->delete();
             session()->flash('message', 'Expense deleted successfully!');
         } else {
             session()->flash('error', 'No expense to delete!');
         }
-
         $this->closeModal();
     }
 }

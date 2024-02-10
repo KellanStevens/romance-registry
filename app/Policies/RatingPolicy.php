@@ -13,7 +13,7 @@ class RatingPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->id !== null;
     }
 
     /**
@@ -21,7 +21,7 @@ class RatingPolicy
      */
     public function view(User $user, Rating $rating): bool
     {
-        //
+        return $user->id === $rating->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class RatingPolicy
      */
     public function restore(User $user, Rating $rating): bool
     {
-        //
+        return $user->id === $rating->user_id;
     }
 
     /**
@@ -61,6 +61,6 @@ class RatingPolicy
      */
     public function forceDelete(User $user, Rating $rating): bool
     {
-        //
+        return $user->id === $rating->user_id;
     }
 }

@@ -110,3 +110,15 @@ it('deletes the expense', function () {
         'amount' => 100
     ]);
 });
+
+it('does not delete the expense if it does not exist', function () {
+    Livewire::test(FormExpense::class)
+        ->set('dateNightId', $this->dateNight->id)
+        ->set('amount', 100)
+        ->call('delete');
+
+    $this->assertDatabaseMissing('expenses', [
+        'date_night_id' => $this->dateNight->id,
+        'amount' => 100
+    ]);
+});

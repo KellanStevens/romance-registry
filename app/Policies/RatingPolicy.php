@@ -29,7 +29,7 @@ class RatingPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->id !== null;
     }
 
     /**

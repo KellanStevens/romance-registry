@@ -27,15 +27,17 @@
                     @endforeach
                 </div>
             </div>
+            <br>
         @endif
-        @error('foodRating') <span class="badge badge-dot badge-danger">{{ $message }}</span> @enderror
-
-        @error('validation')
-        <span class="badge badge-dot badge-danger" style="margin-top: 12px;margin-bottom: 12px;">{{ $message }}</span>
-        @enderror
         <div class="flex items-center justify-left">
             <button type="submit" class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">Save</button>
         </div>
+        @if ($rating)
+            <br/>
+            <div class="flex-1">
+                <button type="button" class="btn btn-outline btn-xs btn-warning" wire:click="delete">Delete</button>
+            </div>
+        @endif
     </form>
 
     <div wire:offline>

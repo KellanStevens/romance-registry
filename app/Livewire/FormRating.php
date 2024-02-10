@@ -73,7 +73,7 @@ class FormRating extends ModalComponent
         $this->closeModal();
     }
 
-    public function store():void
+    public function store(): void
     {
         $this->validate([
             'dateNightId' => 'required|exists:date_nights,id',
@@ -82,6 +82,7 @@ class FormRating extends ModalComponent
             'foodRating' => 'required|integer|between:1,5',
             'comments' => 'nullable|string|max:255',
         ]);
+        $this->authorize('create', Rating::class);
         Rating::create([
             'user_id' => Auth::id(),
             'date_night_id' => $this->dateNightId,

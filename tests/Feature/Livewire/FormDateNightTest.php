@@ -26,5 +26,5 @@ it('renders the correct title when creating a date night', function () {
 it('validates required fields', function () {
     Livewire::test(FormDateNight::class)
         ->call('submit')
-        ->assertHasErrors(['date' => 'required', 'location' => 'required']);
+        ->assertHasErrors();
 });

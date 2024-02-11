@@ -80,6 +80,7 @@ class FormExpense extends ModalComponent
             $this->store();
         }
     }
+
     public function delete(): void
     {
         $this->validate([

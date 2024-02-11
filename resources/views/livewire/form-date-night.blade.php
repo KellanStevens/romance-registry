@@ -1,7 +1,7 @@
 <div class="p-12 dark:bg-gray-800">
     <h1 class="dark:text-white text-black">{{ $title }}</h1>
     <br>
-    <form wire:submit.prevent="storeOrUpdate">
+    <form wire:submit.prevent="submit">
         <label class="form-control w-full max-w-xs">
             <div class="label">
                 <span class="label-text">Date</span>
@@ -18,7 +18,7 @@
             <div class="label">
                 <span class="label-text">Google Maps Link</span>
             </div>
-            <input wire:model.lazy="google_maps_link" id="google_maps_link" type="url" placeholder="https://maps.app.goo.gl/XXXXXX" class="input input-bordered w-full max-w-xs">
+            <input wire:model.lazy="googleMapsLink" id="googleMapsLink" type="url" placeholder="https://maps.app.goo.gl/XXXXXX" class="input input-bordered w-full max-w-xs">
         </label>
         <br>
         <label class="form-control">

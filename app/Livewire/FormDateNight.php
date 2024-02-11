@@ -42,8 +42,8 @@ use LivewireUI\Modal\ModalComponent;
         $this->dateNight = $this->dateNightId ? DateNight::findOrFail($dateNightId) : null;
 
         $this->date = $this->dateNight ? $this->dateNight->date : date('Y-m-d');
-        $this->location = $this->dateNight ? $this->dateNight->location: null;
-        $this->googleMapsLink = $this->dateNight ? $this->dateNight->google_maps_link: null;
+        $this->location = $this->dateNight ? $this->dateNight->location : null;
+        $this->googleMapsLink = $this->dateNight ? $this->dateNight->google_maps_link : null;
         $this->description = $this->dateNight ? $this->dateNight->description : null;
     }
     public function render()

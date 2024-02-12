@@ -2,12 +2,16 @@
 
 use App\Livewire\FormDateNight;
 use App\Models\DateNight;
+use App\Models\User;
 use App\Policies\NoAuthorizationPolicy;
 use Livewire\Livewire;
 
-//setup and teardown
 beforeEach(function () {
-    Gate::policy(DateNight::class, NoAuthorizationPolicy::class);
+    User::factory()->create(['id' => 1]);
+});
+
+afterEach(function () {
+    User::where('id', 1)->delete();
 });
 
 it('renders successfully', function () {
@@ -72,34 +76,84 @@ it('validates length of description field', function () {
         ->assertHasErrors(['description' => 'max']);
 });
 
-//it('stores the date night', function () {
-//    Livewire::test(FormDateNight::class)
-//        ->set('dateNightId', null)
-//        ->set('date', '2021-01-01')
-//        ->set('location', 'Test Location')
-//        ->call('submit');
-//
-//    $this->assertDatabaseHas('date_nights', [
-//        'date' => '2021-01-01',
-//        'location' => 'Test Location',
-//    ]);
-//});
+it('stores the date night', function () {
+    Auth::loginUsingId(1);
 
-//it('updates the date night', function () {
-//    $dateNight = DateNight::factory([
-//        'date' => '2020-01-01',
-//        'location' => 'Old Location'
-//        ])->create();
-//
-//    Livewire::test(FormDateNight::class, ['dateNightId' => $dateNight->id])
-//        ->set('date', '2021-01-01')
-//        ->set('location', 'Test Location')
-//        ->call('submit')
-//        ->assertHasNoErrors();
-//
-//    $this->assertDatabaseHas('date_nights', [
-//        'id' => $dateNight->id,
-//        'date' => '2021-01-01',
-//        'location' => 'Test Location',
-//    ]);
-//});
+    Livewire::test(FormDateNight::class)
+        ->set('dateNightId', null)
+        ->set('date', '2021-01-01')
+        ->set('location', 'Test Location')
+        ->call('submit')
+        ->assertHasNoErrors();
+
+    $this->assertDatabaseHas('date_nights', [
+        'date' => '2021-01-01',
+        'location' => 'Test Location',
+    ]);
+    DateNight::where('date', '2021-01-01')->delete();
+});
+
+it('updates the date night', function () {
+    Auth::loginUsingId(1);
+
+    $dateNight = DateNight::factory([
+        'date' => '2020-01-01',
+        'location' => 'Old Location',
+        ])->create();
+
+    Livewire::test(FormDateNight::class, ['dateNightId' => $dateNight->id]);
+
+    Livewire::test(FormDateNight::class, ['dateNightId' => $dateNight->id])
+        ->set('date', '2021-01-01')
+        ->set('location', 'Test Location')
+        ->call('submit')
+        ->assertHasNoErrors();
+
+    $this->assertDatabaseHas('date_nights', [
+        'id' => $dateNight->id,
+        'date' => '2021-01-01',
+        'location' => 'Test Location',
+    ]);
+    $dateNight->delete();
+});
+
+it('deletes the date night', function () {
+    Auth::loginUsingId(1);
+
+    $dateNight = DateNight::factory([
+        'date' => '2020-01-01',
+        'location' => 'Old Location',
+        ])->create();
+
+    Livewire::test(FormDateNight::class, ['dateNightId' => $dateNight->id])
+        ->call('delete');
+
+    $this->assertDatabaseCount('date_nights', 0);
+});
+
+it('does not allow unauthorized users to create a date night', function () {
+    User::factory()->create(['id' => 2]);
+
+    Livewire::test(FormDateNight::class)
+        ->set('date', '2021-01-01')
+        ->set('location', 'Test Location')
+        ->call('submit')
+        ->assertForbidden();
+
+    User::where('id', 2)->delete();
+});
+
+it('does not allow unauthorized users to update a date night', function () {
+    $dateNight = DateNight::factory([
+        'date' => '2020-01-01',
+        'location' => 'Old Location',
+        ])->create();
+
+    Livewire::test(FormDateNight::class, ['dateNightId' => $dateNight->id])
+        ->set('date', '2021-01-01')
+        ->set('location', 'Test Location')
+        ->call('submit')
+        ->assertForbidden();
+
+    $dateNight->delete();
+});

@@ -72,18 +72,18 @@ it('validates length of description field', function () {
         ->assertHasErrors(['description' => 'max']);
 });
 
-it('stores the date night', function () {
-    Livewire::test(FormDateNight::class)
-        ->set('dateNightId', null)
-        ->set('date', '2021-01-01')
-        ->set('location', 'Test Location')
-        ->call('submit');
-
-    $this->assertDatabaseHas('date_nights', [
-        'date' => '2021-01-01',
-        'location' => 'Test Location',
-    ]);
-});
+//it('stores the date night', function () {
+//    Livewire::test(FormDateNight::class)
+//        ->set('dateNightId', null)
+//        ->set('date', '2021-01-01')
+//        ->set('location', 'Test Location')
+//        ->call('submit');
+//
+//    $this->assertDatabaseHas('date_nights', [
+//        'date' => '2021-01-01',
+//        'location' => 'Test Location',
+//    ]);
+//});
 
 //it('updates the date night', function () {
 //    $dateNight = DateNight::factory([

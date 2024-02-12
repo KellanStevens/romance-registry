@@ -79,7 +79,7 @@ use LivewireUI\Modal\ModalComponent;
             'googleMapsLink' => 'nullable|url|max:255',
             'description' => 'nullable|string|max:255',
         ]);
-        $this->authorize('create', Auth::user());
+        $this->authorize('create', DateNight::class);
         DateNight::create([
             'date' => $this->date,
             'location' => $this->location,

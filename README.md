@@ -15,6 +15,7 @@ I hope you enjoy the project and find it useful. If you have any questions, comm
 
 - [Laravel](https://laravel.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
 - [Alpine.js](https://alpinejs.dev/)
 - [Livewire](https://laravel-livewire.com/)
 - [Blade](https://laravel.com/docs/8.x/blade)

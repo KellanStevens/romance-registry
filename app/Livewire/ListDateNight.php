@@ -17,14 +17,12 @@ use App\Models\Rating;
 
     public function render()
     {
-        return view('livewire.list-date-night', [
-            'dateNightsData' => $this->dateNightsData,
-        ]);
+        return view('livewire.list-date-night');
     }
 
     public function refreshList()
     {
-        $this->reset('dateNightsData');
+        unset($this->dateNightsData);
     }
 
     #[Computed]

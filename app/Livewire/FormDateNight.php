@@ -69,6 +69,7 @@ use LivewireUI\Modal\ModalComponent;
 
         session()->flash('message', 'DateNight updated successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function store(): void
@@ -88,6 +89,7 @@ use LivewireUI\Modal\ModalComponent;
         ]);
         session()->flash('message', 'DateNight created successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function submit(): void
@@ -112,6 +114,7 @@ use LivewireUI\Modal\ModalComponent;
             session()->flash('error', 'No Date Night to delete!');
         }
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
 //    public function storeOrUpdate(): void

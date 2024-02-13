@@ -71,6 +71,7 @@ class FormRating extends ModalComponent
         ]);
         session()->flash('message', 'Rating updated successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function store(): void
@@ -93,6 +94,7 @@ class FormRating extends ModalComponent
         ]);
         session()->flash('message', 'Rating created successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function submit(): void
@@ -121,5 +123,6 @@ class FormRating extends ModalComponent
             session()->flash('error', 'No rating to delete!');
         }
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 }

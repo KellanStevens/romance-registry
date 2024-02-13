@@ -56,6 +56,7 @@ class FormExpense extends ModalComponent
         ]);
         session()->flash('message', 'Expense updated successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function store(): void
@@ -70,6 +71,7 @@ class FormExpense extends ModalComponent
         ]);
         session()->flash('message', 'Expense added successfully!');
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 
     public function submit(): void
@@ -94,5 +96,6 @@ class FormExpense extends ModalComponent
             session()->flash('error', 'No expense to delete!');
         }
         $this->closeModal();
+        $this->dispatch('refreshListDateNight');
     }
 }

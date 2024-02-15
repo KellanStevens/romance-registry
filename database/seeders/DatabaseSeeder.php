@@ -16,8 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->kellanStevens()->create();
-        User::factory()->danielMarais()->create();
+        // only add the users if they are not in the database already
+        if (User::where('id', 1)->doesntExist()) {
+            User::factory()->kellanStevens()->create();
+        }
+        if (User::where('id', 2)->doesntExist()) {
+            User::factory()->danielMarais()->create();
+        }
 
         DateNight::factory()
             ->count(4)

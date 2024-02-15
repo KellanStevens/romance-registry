@@ -41,7 +41,8 @@ I hope you enjoy the project and find it useful. If you have any questions, comm
 - [ ] Add a photo to a date
 - [ ] Add a "Remember this date" feature
 - [ ] Add a "Favorite this date" feature
-- [ ] Add an anniversary countdown feature
+- [x] Add an anniversary countdown feature
+- [x] Add an anniversary count-up feature
 
 ## Demo
 

@@ -108,7 +108,7 @@ use LivewireUI\Modal\ModalComponent;
         ]);
         $this->authorize('delete', $this->dateNight);
         if ($this->dateNight) {
-            $this->dateNight->delete();
+            $this->dateNight->deleteWithRelationships(); // Delete DateNight along with its ratings and expenses
             session()->flash('message', 'Date Night deleted successfully');
         } else {
             session()->flash('error', 'No Date Night to delete!');

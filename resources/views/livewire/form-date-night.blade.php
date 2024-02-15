@@ -32,7 +32,7 @@
     </form>
     @if ($dateNight)
         <br>
-        <button type="button" class="btn btn-outline btn-xs btn-warning" wire:click="delete" wire:confirm="Are you sure you want to delete this DateNight, it's expense and ratings?">Delete</button>
+        <button type="button" class="btn btn-outline btn-xs btn-warning" wire:click="delete" wire:confirm.prompt="Are you sure you want to delete this DateNight, it's expense and ratings?\n DELETE to confirm|DELETE">Delete</button>
     @endif
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>

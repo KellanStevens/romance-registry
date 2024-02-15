@@ -34,24 +34,11 @@ new class extends Component
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-
-{{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
-{{--                    <x-nav-link :href="route('date')" :active="request()->routeIs('date')" wire:navigate>--}}
-{{--                        {{ __('Date') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </div>--}}
-
-{{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
-{{--                    <x-nav-link :href="route('rating')" :active="request()->routeIs('rating')" wire:navigate>--}}
-{{--                        {{ __('Rating') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </div>--}}
-
-{{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
-{{--                    <x-nav-link :href="route('expense')" :active="request()->routeIs('expense')" wire:navigate>--}}
-{{--                        {{ __('Expense') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </div>--}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link>
+                        @livewire('anniversary-countdown')
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

@@ -116,19 +116,4 @@ use LivewireUI\Modal\ModalComponent;
         $this->closeModal();
         $this->dispatch('refreshListDateNight');
     }
-
-//    public function storeOrUpdate(): void
-//    {
-//        $validated = $this->validate();
-//
-//        if (isset($this->dateNightId)) {
-//            DateNight::where('id', $this->dateNightId)->update($validated);
-//            session()->flash('message', 'DateNight updated successfully!');
-//        } else {
-//            DateNight::create($validated);
-//            session()->flash('message', 'DateNight created successfully!');
-//        }
-//
-//        $this->closeModal();
-//    }
 }

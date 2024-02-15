@@ -30,6 +30,10 @@
         <br>
         <button class="lg:w-auto lg px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800" type="submit">Save</button>
     </form>
+    @if ($dateNight)
+        <br>
+        <button type="button" class="btn btn-outline btn-xs btn-warning" wire:click="delete" wire:confirm="Are you sure you want to delete this DateNight, it's expense and ratings?">Delete</button>
+    @endif
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>
     @endif

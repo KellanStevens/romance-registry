@@ -1,6 +1,8 @@
 <!-- resources/views/livewire/anniversary-countdown.blade.php -->
 <div>
     @if($anniversaryDate)
+        Until Anniversary:
+    <br/>
         <div
             wire:poll.1000ms="updateCountdown"
             wire:offline.attr="disabled"

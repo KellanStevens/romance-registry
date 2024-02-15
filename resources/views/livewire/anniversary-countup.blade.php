@@ -3,7 +3,9 @@
 <div>
     @if($anniversaryDate)
         <div>
-            Days Since Anniversary: {{ $daysSinceAnniversary }}
+            Since Anniversary:
+            <br/>
+            {{ $daysSinceAnniversary }} days
         </div>
     @else
         <div>

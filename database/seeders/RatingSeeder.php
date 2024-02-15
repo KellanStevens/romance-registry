@@ -15,5 +15,19 @@ class RatingSeeder extends Seeder
      */
     public function run()
     {
+        // Assuming there is a DateNight with ID 1 and a User with ID 1
+        $dateNight = DateNight::first();
+        $user = User::find(1);
+
+        if ($dateNight && $user) {
+            Rating::create([
+                'user_id' => $user->id,
+                'date_night_id' => $dateNight->id,
+                'price_rating' => 4,
+                'setting_rating' => 5,
+                'food_rating' => 4,
+                'comments' => 'Sample rating comments',
+            ]);
+        }
     }
 }

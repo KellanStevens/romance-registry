@@ -14,5 +14,14 @@ class ExpenseSeeder extends Seeder
      */
     public function run()
     {
+        // Assuming there is a DateNight with ID 1
+        $dateNight = DateNight::first();
+
+        if ($dateNight) {
+            Expense::create([
+                'date_night_id' => $dateNight->id,
+                'amount' => 50.00,
+            ]);
+        }
     }
 }

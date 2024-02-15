@@ -1,7 +1,11 @@
 <!-- resources/views/livewire/anniversary-countdown.blade.php -->
 <div>
     @if($anniversaryDate)
-        <div wire:poll.1000ms="updateCountdown" class="flex gap-5">
+        <div
+            wire:poll.1000ms="updateCountdown"
+            wire:offline.attr="disabled"
+            class="flex gap-5"
+        >
             <div>
                 <span class="countdown font-mono text-1xl">
                   <span style="--value: {{ $remainingDays }};"></span>

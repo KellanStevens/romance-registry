@@ -22,12 +22,17 @@ class DateNight extends Model
         return $this->hasMany(Rating::class);
     }
 
+    public function photos(): HasMany
+    {
+        return $this->hasMany(Photo::class);
+    }
+
     // Method to delete DateNight along with its ratings and expenses
     public function deleteWithRelationships(): void
     {
         $this->ratings()->delete(); // Delete related ratings
-
         $this->expenses()->delete(); // Delete related expenses
+        $this->photos()->update(['date_night_id' => null]); // Detach related photos
 
         $this->delete(); // Delete DateNight
     }

@@ -59,6 +59,16 @@ jobs:
         run: npm ci
       - name: Build frontend
         run: npm run build
+      - name: Cache PHP installations and extensions
+        uses: actions/cache@v3
+        id: php-cache
+        with:
+          path: |
+            ~/.php
+            /usr/local/bin/composer
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
       - name: Install PHP versions
         uses: shivammathur/setup-php@v2
         with:
@@ -85,15 +95,7 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Laravel Dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.dependency-stability }} --prefer-dist --no-interaction --no-suggest
-
-      - name: Update Dependencies with latest stable
-        if: matrix.dependency-stability == 'prefer-stable'
-        run: composer update --prefer-stable
-      - name: Update Dependencies with lowest stable
-        if: matrix.dependency-stability == 'prefer-lowest'
-        run: composer update --prefer-stable --prefer-lowest
+          composer install --no-interaction --no-suggest --prefer-dist --optimize-autoloader --dev
 
       - name: Generate key
         run: php artisan key:generate

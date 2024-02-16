@@ -12,6 +12,7 @@ class AnniversaryCountdown extends Component
     public $remainingHours;
     public $remainingMinutes;
     public $remainingSeconds;
+    public $isToday;
 
     public function mount()
     {
@@ -20,12 +21,16 @@ class AnniversaryCountdown extends Component
         if ($anniversary) {
             $this->anniversaryDate = $anniversary->item_value;
             $this->updateCountdown();
+
+            // Check if the anniversary is today
+            $this->isToday = date('m-d') == date('m-d', strtotime($this->anniversaryDate));
         } else {
             $this->anniversaryDate = null;
             $this->remainingDays = null;
             $this->remainingHours = null;
             $this->remainingMinutes = null;
             $this->remainingSeconds = null;
+            $this->isToday = false;
         }
     }
 

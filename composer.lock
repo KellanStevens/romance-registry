@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab47233c8516c6279892aa3ffe84eed3",
+    "content-hash": "1a5055e96d5dd80de7293eb147411b33",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -9874,6 +9874,60 @@
             "time": "2023-02-07T11:34:05+00:00"
         },
         {
+            "name": "slope-it/clock-mock",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slope-it/clock-mock.git",
+                "reference": "075d6052b1c029b62a0e757b62082697546e08fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slope-it/clock-mock/zipball/075d6052b1c029b62a0e757b62082697546e08fe",
+                "reference": "075d6052b1c029b62a0e757b62082697546e08fe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-uopz": ">=6.1.1",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "ext-calendar": "*",
+                "mockery/mockery": "^1.4.3",
+                "phpunit/phpunit": "^9.6 || ^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SlopeIt\\ClockMock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrea Sprega",
+                    "email": "andrea.sprega@slope.it",
+                    "role": "Software engineer"
+                }
+            ],
+            "description": "A library for mocking current date and time in tests.",
+            "keywords": [
+                "ClockMock",
+                "clock",
+                "mock",
+                "slope",
+                "slope.it"
+            ],
+            "support": {
+                "issues": "https://github.com/slope-it/clock-mock/issues",
+                "source": "https://github.com/slope-it/clock-mock/tree/0.4.0"
+            },
+            "time": "2023-08-21T12:01:30+00:00"
+        },
+        {
             "name": "spatie/backtrace",
             "version": "1.5.3",
             "source": {
@@ -10450,5 +10504,5 @@
         "php": "^8.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

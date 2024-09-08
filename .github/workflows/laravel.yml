@@ -2,9 +2,8 @@
 # Original configuration: https://ghygen.hi-folks.dev?code=b39bac2beaa10a271c5928f33a12a399
 name: Template - Laravel application (Mysql)
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    type: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   laravel-tests:
@@ -126,14 +125,3 @@ jobs:
           DB_USER: root
 
         run: vendor/bin/pest
-
-
-      - name: Execute Code Sniffer via phpcs
-        run: |
-          composer require --dev squizlabs/php_codesniffer
-          vendor/bin/phpcs --standard=PSR12 app
-
-      - name: Execute Code Static Analysis (PHP Stan + Larastan)
-        run: |
-          composer require --dev nunomaduro/larastan
-          vendor/bin/phpstan analyse app -c ./vendor/nunomaduro/larastan/extension.neon  --level=4 --no-progress

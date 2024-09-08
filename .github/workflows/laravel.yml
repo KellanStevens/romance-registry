@@ -2,9 +2,8 @@
 # Original configuration: https://ghygen.hi-folks.dev?code=b39bac2beaa10a271c5928f33a12a399
 name: Template - Laravel application (Mysql)
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    type: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   laravel-tests:

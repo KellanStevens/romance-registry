@@ -11,9 +11,9 @@ class Rating extends Model
 
     protected $fillable = ['user_id', 'date_night_id', 'price_rating', 'setting_rating', 'food_rating', 'comments'];
 
-    public function dateNight()
+    public function occasion()
     {
-        return $this->belongsTo(DateNight::class);
+        return $this->belongsTo(Occasion::class);
     }
 
     public function user()

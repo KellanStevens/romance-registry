@@ -11,8 +11,8 @@ class Expense extends Model
 
     protected $fillable = ['date_night_id', 'amount'];
 
-    public function dateNight()
+    public function occasion()
     {
-        return $this->belongsTo(DateNight::class);
+        return $this->belongsTo(Occasion::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OccasionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,6 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+    Route::get('occasions', [OccasionController::class, 'index'])->name('occasions.index');
 });
 
 require __DIR__.'/settings.php';

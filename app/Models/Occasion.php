@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class DateNight extends Model
+class Occasion extends Model
 {
     use HasFactory;
 
@@ -27,7 +27,7 @@ class DateNight extends Model
         return $this->hasMany(Photo::class);
     }
 
-    // Method to delete DateNight along with its ratings and expenses
+    // Method to delete Occasion along with its ratings and expenses
     public function deleteWithRelationships(): void
     {
         $this->ratings()->delete();

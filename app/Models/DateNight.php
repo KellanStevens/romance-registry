@@ -30,10 +30,10 @@ class DateNight extends Model
     // Method to delete DateNight along with its ratings and expenses
     public function deleteWithRelationships(): void
     {
-        $this->ratings()->delete(); // Delete related ratings
-        $this->expenses()->delete(); // Delete related expenses
-        $this->photos()->update(['date_night_id' => null]); // Detach related photos
+        $this->ratings()->delete();
+        $this->expenses()->delete();
+        $this->photos()->update(['date_night_id' => null]);
 
-        $this->delete(); // Delete DateNight
+        $this->delete();
     }
 }

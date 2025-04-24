@@ -44,10 +44,6 @@ I hope you enjoy the project and find it useful. If you have any questions, comm
 - [x] Add an anniversary countdown feature
 - [x] Add an anniversary count-up feature
 
-## Demo
-
-![](./demo.gif)
-
 ## Installation
 
 ```
